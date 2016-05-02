@@ -8,32 +8,34 @@ program lattice
     integer                                 ::  L                   !Length of edge of lattice
     integer                                 ::  N                   !No. of distances to try for sheets
     integer                                 ::  x, y, z, i
+    integer                                 ::  no                  !No. of runs
     integer, dimension(:,:,:), allocatable  ::  sheet               !Array for thin sheets
     integer, dimension(:,:,:), allocatable  ::  cube                !Array for random cube
     
-    real(kind=dp)                           ::  prop
+    real(kind=dp)                           ::  prop                !Proportion of 
+    real(kind=dp)                           ::  prop_inc            !Increment for the proportion
 
 
-    print*, 'Length for cube?'
+    print*, 'Length for cube and sheet edge?'
     read(*,*) L
     print*, L
-
-    print*, 'Proportion of metal atoms that are calcium?'
-    read(*,*) prop
 
     print*, 'CUBE TEST'
 
     open(unit=10,file='lattice.dat', status='replace')
     
-    do i = 0, 4, 1
-        
-        prop = 0.25*i
+    no = floor(real(L**3)/2.0_dp)       !Number of runs to get as many different proportions in the cube as possible
+    prop_inc = 1.0_dp/real(no)          !The increment in the proportion
+    
+    !Loops over all different proportions
+    do i = 0, no, 1
+        prop = prop_inc*i
         call cube_init(L, cube, prop)
         call write_cube(cube, L,  prop, i)
-        deallocate(cube)
-    
+        deallocate(cube)    
     end do
 
+    !
     call sheet_init(L, 10, sheet)
     call write_sheet(sheet, L, 10, 0)
 
@@ -94,7 +96,7 @@ program lattice
         cube = 0
         atoms = L**3
         print*, 'no of atoms =', atoms
-        nme = aint(real(atoms, dp)/2.0_dp)
+        nme = ceiling(real(atoms, dp)/2.0_dp)
         print*, 'no of metal =', nme
         nca = nint(prop*real(nme, dp))
         print*, 'no of ca =', nca
@@ -148,7 +150,6 @@ program lattice
         
         character(len=10), parameter                        ::  fmt1 = '(I3.3)'
         character(len=3)                                    ::  filename
-        character(len=3)                                    ::  filename2
         
         integer                                             ::  x, y, z
         
@@ -160,9 +161,9 @@ program lattice
         cart = 4.2_dp*real(L)/2.0_dp
         
         write(filename, fmt1)  int(prop*100.0_dp)
-        write(filename2, fmt1) fileno
         
-        open(unit=fileno, file='cube_'//filename//'_'//filename2//'.cell')
+        open(unit=fileno, file='cube_'//filename//'.cell')
+        open(unit=900+fileno, file='cube_'//filename//'.dat')
         
         write(fileno, *) '%BLOCK LATTICE_CART'
         write(fileno, *) cart, 0.0_dp, 0.0_dp
@@ -196,6 +197,7 @@ program lattice
         write(fileno, *) '%ENDBLOCK CELL_CONSTRAINTS'
         
         close(unit=fileno)
+        close(unit=900+fileno)
         
     end subroutine write_cube
 
@@ -228,6 +230,7 @@ program lattice
         write(filename2, fmt1) fileno
         
         open(unit=fileno, file='sheet_'//filename//'_'//filename2//'.cell')
+        open(unit=900+fileno, file='sheet_'//filename//'_'//filename2//'.dat')
         
         write(fileno, *) '%BLOCK LATTICE_CART'
         write(fileno, *) cart, 0.0_dp, 0.0_dp
@@ -264,6 +267,7 @@ program lattice
         write(fileno, *) '%ENDBLOCK CELL_CONSTRAINTS'
         
         close(unit=fileno)
+        close(unit=900+fileno)
         
     end subroutine write_sheet
 
