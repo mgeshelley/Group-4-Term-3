@@ -4,3 +4,5 @@
 1. Generate a lattice using `lattice.f90`
 2. Run the simulation using `run_castep.sh`
 3. Find the convex hull using `convex_hull.py`
+
+To run on Physlogin use `run_castep_ebor.sh`.
