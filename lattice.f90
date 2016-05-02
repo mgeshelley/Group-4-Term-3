@@ -6,6 +6,7 @@ program lattice
     
     integer                                 ::  status
     integer                                 ::  L                   !Length of edge of lattice
+    integer                                 ::  V                   !Length of cuboid in z direction, determines the size of the vacuum
     integer                                 ::  N                   !No. of distances to try for sheets
     integer                                 ::  x, y, z, i
     integer                                 ::  no                  !No. of runs
@@ -18,9 +19,9 @@ program lattice
 
     print*, 'Length for cube and sheet edge?'
     read(*,*) L
-    print*, L
 
-    print*, 'CUBE TEST'
+    print*, 'Length in z for vacuum?'
+    read(*,*) V
 
     open(unit=10,file='lattice.dat', status='replace')
     
@@ -57,7 +58,7 @@ program lattice
         do x = 0, L-1, 1
             do y = 0, L-1, 1
                 do z = 0, V-1, 1
-
+                    !Determines odd or even
                     parity = modulo(x+y+z,2)
                     if((z .le. 2).or.(z == V-1))then!If it's in the first three layers or the very top layer
                         if(parity==1)then
@@ -74,7 +75,8 @@ program lattice
         end do
 
     end subroutine sheet_init
-
+    
+    !Initialises cube shape
     subroutine cube_init(L, cube, prop)
 
         implicit none
@@ -95,13 +97,13 @@ program lattice
 
         cube = 0
         atoms = L**3
-        print*, 'no of atoms =', atoms
+
         nme = ceiling(real(atoms, dp)/2.0_dp)
-        print*, 'no of metal =', nme
+
         nca = nint(prop*real(nme, dp))
-        print*, 'no of ca =', nca
+
         nmg = nme - nca
-        print*, 'no of mg =', nmg
+
 
         prop = real(nca)/real(nme)
 
@@ -113,7 +115,7 @@ program lattice
                     if(modulo(x+y+z, 2) /= 1)then
                         
                         prob = rand(seed)
-                        !print*, nca, nmg, prob, real(nca, dp)/(real(nca, dp)+real(nmg, dp))                        
+                                
 
                         if((nca==1).and.(nmg==0))then!Sets atom to calcium if only one ca left
                             cube(x,y,z) = 1
@@ -212,7 +214,6 @@ program lattice
         
         character(len=10), parameter                        ::  fmt1 = '(I3.3)'
         character(len=3)                                    ::  filename
-        character(len=3)                                    ::  filename2
         
         integer                                             ::  x, y, z
         
@@ -221,16 +222,17 @@ program lattice
         real(kind=dp)                                       ::  stepz
         real(kind=dp)                                       ::  cartz
         
+        !Sets the lattice constants and steps in fractional coords in x,y
         step  = 1.0_dp/real(L)
         stepz = 1.0_dp/real(V)
+        !Sets the lattice constants and steps in fractional coords in z
         cart  = 4.2_dp*real(L)/2.0_dp
         cartz = 4.2_dp*real(V)/2.0_dp
         
-        write(filename, fmt1)  int(prop*100.0_dp)
-        write(filename2, fmt1) fileno
+        write(filename, fmt1) fileno
         
-        open(unit=fileno, file='sheet_'//filename//'_'//filename2//'.cell')
-        open(unit=900+fileno, file='sheet_'//filename//'_'//filename2//'.dat')
+        open(unit=fileno, file='sheet_'//filename//'.cell')
+        open(unit=900+fileno, file='sheet_'//filename//'.dat')
         
         write(fileno, *) '%BLOCK LATTICE_CART'
         write(fileno, *) cart, 0.0_dp, 0.0_dp
