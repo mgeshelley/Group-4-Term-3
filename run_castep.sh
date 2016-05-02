@@ -1,10 +1,14 @@
 #!/bin/bash
 
 # Get user input
-read -r -p "Delete old .castep files? [yN] " -n 1 yn
-echo ""
-read -r -p "Enter 'cube' or 'sheet': " latticetype
-read -r -p "How many cores? " numcores
+#read -r -p "Delete old .castep files? [yN] " -n 1 yn
+#echo ""
+#read -r -p "Enter 'cube' or 'sheet': " latticetype
+#read -r -p "How many cores? " numcores
+
+yn = n
+latticetype = cube
+numcores = 6
 
 ./lattice.exe
 
