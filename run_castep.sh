@@ -9,6 +9,8 @@ read -r -p "How many cores? " numcores
 ./lattice.exe
 
 for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
+    echo $name
+
     # Delete the old .castep file if yn is yes; default is to keep
     case $yn in
         [Yy]* ) rm -f "$name.castep";;
@@ -18,7 +20,7 @@ for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
     cp base.param $name.param
 
     # Run CASTEP
-    mpirun -np $numcores castep.mpi $name
+    time mpirun -np $numcores castep.mpi $name
 
     # Get energies from the output file
     grep 'total energy' "$name.castep"
