@@ -17,11 +17,8 @@ program lattice
     real(kind=dp)                           ::  prop_inc            !Increment for the proportion
 
 
-    print*, 'Length for cube and sheet edge?'
-    read(*,*) L
-
-    print*, 'Length in z for vacuum?'
-    read(*,*) V
+    L = 3
+    v = 10
 
     open(unit=10,file='lattice.dat', status='replace')
     
