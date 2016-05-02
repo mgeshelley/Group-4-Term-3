@@ -16,7 +16,7 @@
 #$ -cwd
 
 #select max run-time
-#$ -l h_rt=00:01:00
+#$ -l h_rt=00:05:00
 
 #select parallel environment to run on nn cores, max 32 cores/node
 #$ -pe mpi-16 32
