@@ -11,7 +11,7 @@ case $yn in
 esac
 
 # Run CASTEP
-mpirun -np 1 castep.mpi $name &
+mpirun -np 3 castep.mpi $name &
 
 # Get energies from the output file
 grep 'total energy' "$name.castep"
