@@ -14,9 +14,11 @@ for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
         [Yy]* ) rm -f "$name.castep";;
         * ) ;;
     esac
+    
+    cp base.param $name.param
 
     # Run CASTEP
-    mpirun -np $numcores castep.mpi $name &
+    mpirun -np $numcores castep.mpi $name
 
     # Get energies from the output file
     grep 'total energy' "$name.castep"
