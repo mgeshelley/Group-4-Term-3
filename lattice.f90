@@ -36,8 +36,8 @@ program lattice
     end do
 
     !
-    call sheet_init(L, 10, sheet)
-    call write_sheet(sheet, L, 10, 0)
+    !call sheet_init(L, 10, sheet)
+    !call write_sheet(sheet, L, 10, 0)
 
     contains
 
