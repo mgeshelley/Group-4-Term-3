@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get user input
-read -r -p "Delete old .castep files? [Yn] " -n 1 yn
+read -r -p "Delete old .castep files? [yN] " -n 1 yn
 echo ""
 
 for name in $( ls *.cell | sed 's/\(.*\)\..*/\1/' ); do
