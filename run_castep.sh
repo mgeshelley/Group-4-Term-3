@@ -4,6 +4,8 @@
 read -r -p "Delete old .castep files? [yN] " -n 1 yn
 echo ""
 
+./lattice.exe
+
 for name in $( ls *.cell | sed 's/\(.*\)\..*/\1/' ); do
     # Delete the old .castep file if yn is yes; default is to keep
     case $yn in
