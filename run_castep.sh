@@ -12,7 +12,7 @@ for name in $( ls *.cell | sed 's/\(.*\)\..*/\1/' ); do
     esac
 
     # Run CASTEP
-    mpirun -np 3 castep.mpi $name &
+    ./run_castep_ebor.sh $name &
 
     # Get energies from the output file
     grep 'total energy' "$name.castep"
