@@ -774,8 +774,7 @@ WARN_LOGFILE           =
 INPUT                  = "README.md" \
                          "constants.f90" \
                          "convex_hull.py" \
-                         "lattice.f90" \
-                         "run_castep.sh"
+                         "lattice.f90"
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses

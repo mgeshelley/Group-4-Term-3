@@ -30,12 +30,12 @@ subroutine \hyperlink{lattice_8f90_a31f431c955e9314f85387edc05e3f005}{write\+\_\
 Initialises a cube of randomly-\/arranged atoms. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em L} & (input, integer) length of a side of the cube \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em L} & (integer) length of a side of the cube \\
 \hline
-{\em cube} & (output, integer array) the generated cube \\
+\mbox{\tt out}  & {\em cube} & (integer array) the generated cube \\
 \hline
-{\em prop} & (input, real) proportion of metal ions that are calcium \\
+\mbox{\tt in}  & {\em prop} & (real) proportion of metal ions that are calcium \\
 \hline
 \end{DoxyParams}
 
@@ -75,12 +75,12 @@ Definition at line 8 of file lattice.\+f90.
 Initialises a thin sheet of randomly-\/arranged atoms. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em L} & (input, integer) length of a side of the sheet \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em L} & (integer) length of a side of the sheet \\
 \hline
-{\em V} & (input, integer) total height of the structure \\
+\mbox{\tt in}  & {\em V} & (integer) total height of the structure \\
 \hline
-{\em sheet} & (output, integer array) the generated sheet \\
+\mbox{\tt out}  & {\em sheet} & (integer array) the generated sheet \\
 \hline
 \end{DoxyParams}
 
@@ -102,14 +102,14 @@ Definition at line 54 of file lattice.\+f90.
 Writes a generated cube to a C\+A\+S\+T\+EP cell file. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em cube} & (input, integer array) the cube of atoms \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cube} & (integer array) the cube of atoms \\
 \hline
-{\em L} & (input, real) length of a side of the cube \\
+\mbox{\tt in}  & {\em L} & (real) length of a side of the cube \\
 \hline
-{\em prop} & (input, real) proportion of metal ions that are calcium \\
+\mbox{\tt in}  & {\em prop} & (real) proportion of metal ions that are calcium \\
 \hline
-{\em fileno} & (input, integer) the memory unit corresponding to the file to which to write \\
+\mbox{\tt in}  & {\em fileno} & (integer) the memory unit corresponding to the file to which to write \\
 \hline
 \end{DoxyParams}
 
@@ -131,14 +131,14 @@ Definition at line 161 of file lattice.\+f90.
 Writes a generated sheet to a C\+A\+S\+T\+EP cell file. 
 
 
-\begin{DoxyParams}{Parameters}
-{\em sheet} & (input, integer array) the sheet of atoms \\
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em sheet} & (integer array) the sheet of atoms \\
 \hline
-{\em L} & (input, real) length of a side of the sheet \\
+\mbox{\tt in}  & {\em L} & (real) length of a side of the sheet \\
 \hline
-{\em V} & (input, integer) total height of the structure \\
+\mbox{\tt in}  & {\em V} & (integer) total height of the structure \\
 \hline
-{\em fileno} & (input, integer) the memory unit corresponding to the file to which to write \\
+\mbox{\tt in}  & {\em fileno} & (integer) the memory unit corresponding to the file to which to write \\
 \hline
 \end{DoxyParams}
 

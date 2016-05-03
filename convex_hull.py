@@ -2,7 +2,7 @@
 
 import numpy as np
 
-"""
+"""@package convex_hull
 Reads in data file containing final energies from CASTEP runs with a 
 parameter being varied. Creates convex hull for data.
 """
