@@ -1,0 +1,147 @@
+\hypertarget{lattice_8f90}{}\section{lattice.\+f90 File Reference}
+\label{lattice_8f90}\index{lattice.\+f90@{lattice.\+f90}}
+\subsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+program \hyperlink{lattice_8f90_a074b800ff517e34c79a2dbc1c126c053}{lattice}
+\begin{DoxyCompactList}\small\item\em Fortran 2003 program to generate an initial lattice. \end{DoxyCompactList}\item 
+subroutine \hyperlink{lattice_8f90_a79ad1c06a2b1d40c67a129d5e5eb1a34}{sheet\+\_\+init} (L, V, sheet)
+\begin{DoxyCompactList}\small\item\em Initialises a thin sheet of randomly-\/arranged atoms. \end{DoxyCompactList}\item 
+subroutine \hyperlink{lattice_8f90_af7097236827ac4e2d8517ef9e5977dbf}{cube\+\_\+init} (L, cube, prop)
+\begin{DoxyCompactList}\small\item\em Initialises a cube of randomly-\/arranged atoms. \end{DoxyCompactList}\item 
+subroutine \hyperlink{lattice_8f90_a4e9addf4e0a1a8031ff3cae9ef023ac6}{write\+\_\+cube} (cube, L, prop, fileno)
+\begin{DoxyCompactList}\small\item\em Writes a generated cube to a C\+A\+S\+T\+EP cell file. \end{DoxyCompactList}\item 
+subroutine \hyperlink{lattice_8f90_a31f431c955e9314f85387edc05e3f005}{write\+\_\+sheet} (sheet, L, V, fileno)
+\begin{DoxyCompactList}\small\item\em Writes a generated sheet to a C\+A\+S\+T\+EP cell file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function/\+Subroutine Documentation}
+\index{lattice.\+f90@{lattice.\+f90}!cube\+\_\+init@{cube\+\_\+init}}
+\index{cube\+\_\+init@{cube\+\_\+init}!lattice.\+f90@{lattice.\+f90}}
+\subsubsection[{\texorpdfstring{cube\+\_\+init(\+L, cube, prop)}{cube_init(L, cube, prop)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lattice\+::cube\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{integer, intent(in)}]{L, }
+\item[{integer, dimension(\+:,\+:,\+:), intent(inout), allocatable}]{cube, }
+\item[{real(kind=dp), intent(inout)}]{prop}
+\end{DoxyParamCaption}
+)}\hypertarget{lattice_8f90_af7097236827ac4e2d8517ef9e5977dbf}{}\label{lattice_8f90_af7097236827ac4e2d8517ef9e5977dbf}
+
+
+Initialises a cube of randomly-\/arranged atoms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & (input, integer) length of a side of the cube \\
+\hline
+{\em cube} & (output, integer array) the generated cube \\
+\hline
+{\em prop} & (input, real) proportion of metal ions that are calcium \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 92 of file lattice.\+f90.
+
+\index{lattice.\+f90@{lattice.\+f90}!lattice@{lattice}}
+\index{lattice@{lattice}!lattice.\+f90@{lattice.\+f90}}
+\subsubsection[{\texorpdfstring{lattice}{lattice}}]{\setlength{\rightskip}{0pt plus 5cm}program lattice (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{lattice_8f90_a074b800ff517e34c79a2dbc1c126c053}{}\label{lattice_8f90_a074b800ff517e34c79a2dbc1c126c053}
+
+
+Fortran 2003 program to generate an initial lattice. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Produce a pair of sheets with a vacuum between them\end{DoxyRefDesc}
+
+
+This program creates a C\+A\+S\+T\+EP cell file consisting of a random arrangement of Ca and Mg atoms in a crystal structure with oxygen, according to a user specification. 
+
+Definition at line 8 of file lattice.\+f90.
+
+\index{lattice.\+f90@{lattice.\+f90}!sheet\+\_\+init@{sheet\+\_\+init}}
+\index{sheet\+\_\+init@{sheet\+\_\+init}!lattice.\+f90@{lattice.\+f90}}
+\subsubsection[{\texorpdfstring{sheet\+\_\+init(\+L, V, sheet)}{sheet_init(L, V, sheet)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lattice\+::sheet\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{integer, intent(in)}]{L, }
+\item[{integer, intent(in)}]{V, }
+\item[{integer, dimension(\+:,\+:,\+:), intent(inout), allocatable}]{sheet}
+\end{DoxyParamCaption}
+)}\hypertarget{lattice_8f90_a79ad1c06a2b1d40c67a129d5e5eb1a34}{}\label{lattice_8f90_a79ad1c06a2b1d40c67a129d5e5eb1a34}
+
+
+Initialises a thin sheet of randomly-\/arranged atoms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & (input, integer) length of a side of the sheet \\
+\hline
+{\em V} & (input, integer) total height of the structure \\
+\hline
+{\em sheet} & (output, integer array) the generated sheet \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file lattice.\+f90.
+
+\index{lattice.\+f90@{lattice.\+f90}!write\+\_\+cube@{write\+\_\+cube}}
+\index{write\+\_\+cube@{write\+\_\+cube}!lattice.\+f90@{lattice.\+f90}}
+\subsubsection[{\texorpdfstring{write\+\_\+cube(cube, L, prop, fileno)}{write_cube(cube, L, prop, fileno)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lattice\+::write\+\_\+cube (
+\begin{DoxyParamCaption}
+\item[{integer, dimension(\+:,\+:,\+:), intent(in), allocatable}]{cube, }
+\item[{integer, intent(in)}]{L, }
+\item[{real(kind=dp), intent(in)}]{prop, }
+\item[{integer, intent(in)}]{fileno}
+\end{DoxyParamCaption}
+)}\hypertarget{lattice_8f90_a4e9addf4e0a1a8031ff3cae9ef023ac6}{}\label{lattice_8f90_a4e9addf4e0a1a8031ff3cae9ef023ac6}
+
+
+Writes a generated cube to a C\+A\+S\+T\+EP cell file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cube} & (input, integer array) the cube of atoms \\
+\hline
+{\em L} & (input, real) length of a side of the cube \\
+\hline
+{\em prop} & (input, real) proportion of metal ions that are calcium \\
+\hline
+{\em fileno} & (input, integer) the memory unit corresponding to the file to which to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file lattice.\+f90.
+
+\index{lattice.\+f90@{lattice.\+f90}!write\+\_\+sheet@{write\+\_\+sheet}}
+\index{write\+\_\+sheet@{write\+\_\+sheet}!lattice.\+f90@{lattice.\+f90}}
+\subsubsection[{\texorpdfstring{write\+\_\+sheet(sheet, L, V, fileno)}{write_sheet(sheet, L, V, fileno)}}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lattice\+::write\+\_\+sheet (
+\begin{DoxyParamCaption}
+\item[{integer, dimension(\+:,\+:,\+:), intent(in), allocatable}]{sheet, }
+\item[{integer, intent(in)}]{L, }
+\item[{integer, intent(in)}]{V, }
+\item[{integer, intent(in)}]{fileno}
+\end{DoxyParamCaption}
+)}\hypertarget{lattice_8f90_a31f431c955e9314f85387edc05e3f005}{}\label{lattice_8f90_a31f431c955e9314f85387edc05e3f005}
+
+
+Writes a generated sheet to a C\+A\+S\+T\+EP cell file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sheet} & (input, integer array) the sheet of atoms \\
+\hline
+{\em L} & (input, real) length of a side of the sheet \\
+\hline
+{\em V} & (input, integer) total height of the structure \\
+\hline
+{\em fileno} & (input, integer) the memory unit corresponding to the file to which to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 228 of file lattice.\+f90.
+

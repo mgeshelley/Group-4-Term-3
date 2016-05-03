@@ -1,3 +1,10 @@
+!> @brief Fortran 2003 program to generate an initial lattice
+!! 
+!! \todo Produce a pair of sheets with a vacuum between them
+!!
+!! This program creates a CASTEP cell file consisting of a random
+!! arrangement of Ca and Mg atoms in a crystal structure with
+!! oxygen, according to a user specification.
 program lattice
 
     use constants
@@ -39,6 +46,10 @@ program lattice
 
     contains
 
+    !> \brief Initialises a thin sheet of randomly-arranged atoms
+    !! \param L (input, integer) length of a side of the sheet
+    !! \param V (input, integer) total height of the structure
+    !! \param sheet (output, integer array) the generated sheet
     subroutine sheet_init(L, V, sheet)
 
         implicit none
@@ -73,7 +84,10 @@ program lattice
 
     end subroutine sheet_init
     
-    !Initialises cube shape
+    !> \brief Initialises a cube of randomly-arranged atoms
+    !! \param L (input, integer) length of a side of the cube
+    !! \param cube (output, integer array) the generated cube
+    !! \param prop (input, real) proportion of metal ions that are calcium
     subroutine cube_init(L, cube, prop)
 
         implicit none
@@ -138,6 +152,11 @@ program lattice
         end do random_ca
     end subroutine
     
+    !> \brief Writes a generated cube to a CASTEP cell file
+    !! \param cube (input, integer array) the cube of atoms
+    !! \param L (input, real) length of a side of the cube
+    !! \param prop (input, real) proportion of metal ions that are calcium
+    !! \param fileno (input, integer) the memory unit corresponding to the file to which to write
     subroutine write_cube(cube, L,  prop, fileno)
     
         implicit none
@@ -200,6 +219,11 @@ program lattice
         
     end subroutine write_cube
 
+    !> \brief Writes a generated sheet to a CASTEP cell file
+    !! \param sheet (input, integer array) the sheet of atoms
+    !! \param L (input, real) length of a side of the sheet
+    !! \param V (input, integer) total height of the structure
+    !! \param fileno (input, integer) the memory unit corresponding to the file to which to write
     subroutine write_sheet(sheet, L, V, fileno)
     
         implicit none
