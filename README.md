@@ -7,4 +7,4 @@
 
 To run on Physlogin use `run_castep_ebor.sh`.
 
-**For full documentation, see [the Doxygen PDF](https://github.com/mges501York/Group-4-Term-3/latex/refman.pdf)**
+**For full documentation, see [the Doxygen PDF](https://github.com/mges501York/Group-4-Term-3/blob/master/latex/refman.pdf)**
