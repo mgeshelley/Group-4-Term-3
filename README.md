@@ -6,3 +6,5 @@
 3. Find the convex hull using `convex_hull.py`
 
 To run on Physlogin use `run_castep_ebor.sh`.
+
+**For full documentation, see [the Doxygen PDF](https://github.com/mges501York/Group-4-Term-3/latex/refman.pdf)**
