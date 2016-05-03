@@ -6,9 +6,9 @@
 #read -r -p "Enter 'cube' or 'sheet': " latticetype
 #read -r -p "How many cores? " numcores
 
-yn = n
-latticetype = cube
-numcores = 6
+yn="n"
+latticetype="cube"
+numcores=6
 
 ./lattice.exe
 

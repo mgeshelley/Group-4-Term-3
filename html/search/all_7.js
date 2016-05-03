@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pi',['pi',['../namespaceconstants.html#a6b3bd07bfab41d9c44a226e58a25abb2',1,'constants']]]
+  ['n',['n',['../namespaceconvex__hull.html#ac5465861527a4ef8e879c3a49cbd8766',1,'convex_hull']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['lattice',['lattice',['../lattice_8f90.html#a074b800ff517e34c79a2dbc1c126c053',1,'lattice.f90']]],
-  ['lattice_2ef90',['lattice.f90',['../lattice_8f90.html',1,'']]]
+  ['hv_5fnew',['hv_new',['../namespaceconvex__hull.html#af248f2a2b3bdf6275178a4d6003241a4',1,'convex_hull']]]
 ];
