@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.4.21)  3 MAY 2016 17:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.4.21)  3 MAY 2016 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**refman.tex
+**refman
 (./refman.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
@@ -1185,13 +1185,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 6.29996pt on input line 13.
-)
+ [3
+
+])
 \tf@toc=\write5
 \openout5 = `refman.toc'.
 
- [3
-
-]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 135.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -1251,9 +1250,9 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.09995pt on input line 12.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 8.99994pt on input line 27.
+(Font)              scaled to size 8.99994pt on input line 25.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 6.29996pt on input line 27.
+(Font)              scaled to size 6.29996pt on input line 25.
 )
 (./namespaceconvex__hull.tex [7]
 LaTeX Font Info:    Font shape `TS1/phv/bc/n' will be
@@ -1312,25 +1311,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 ) [11] [12
 
-]
-No file refman.ind.
+] (./refman.ind [13
+
+
+])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
-(./refman.aux)
+ (./refman.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 165.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 165.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 3A428AAEB3270891578AEA188022C49E;5685.
+(rerunfilecheck)             Checksum: 8FE406AB80A70ADB3285C62CBD66ADCD;5755.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 165.
  ) 
 Here is how much of TeX's memory you used:
- 14877 strings out of 494953
- 211392 string characters out of 6180977
- 302211 words of memory out of 5000000
- 17823 multiletter control sequences out of 15000+600000
+ 14882 strings out of 494953
+ 211443 string characters out of 6180977
+ 303211 words of memory out of 5000000
+ 17824 multiletter control sequences out of 15000+600000
  64483 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,15n,92p,496b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,15n,92p,492b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
@@ -1338,10 +1339,10 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helveti
 c/uhvbo8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (16 pages, 81809 bytes).
+Output written on refman.pdf (17 pages, 83584 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 80 named destinations out of 1000 (max. 500000)
- 257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 408 PDF objects out of 1000 (max. 8388607)
+ 377 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 265 words of extra memory for PDF output out of 10000 (max. 10000000)
 
