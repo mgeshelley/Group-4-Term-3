@@ -5,6 +5,8 @@
 !! This program creates a CASTEP cell file consisting of a random
 !! arrangement of Ca and Mg atoms in a crystal structure with
 !! oxygen, according to a user specification.
+
+!! \bug Code generates a file called fort.6. It is unknown what this is or why it exists. It appears to contain lots of lattice information preceeded by a 7.
 program lattice
 
     use constants
@@ -14,8 +16,7 @@ program lattice
     integer                                 ::  status
     integer                                 ::  L                   !< Length of edge of lattice
     integer                                 ::  V                   !< Length of cuboid in z direction, determines the size of the vacuum
-    integer                                 ::  N                   !< No. of distances to try for sheets
-    integer                                 ::  x, y, z, i
+    integer                                 ::  x, y, z, i, j
     integer                                 ::  no                  !< No. of runs
     integer, dimension(:,:,:), allocatable  ::  sheet               !< Array for thin sheets
     integer, dimension(:,:,:), allocatable  ::  cube                !< Array for random cube
@@ -26,8 +27,6 @@ program lattice
 
     L = 3
     v = 10
-
-    open(unit=10,file='lattice.dat', status='replace')
     
     no = floor(real(L**3)/2.0_dp)       !Number of runs to get as many different proportions in the cube as possible
     prop_inc = 1.0_dp/real(no)          !The increment in the proportion
@@ -37,7 +36,8 @@ program lattice
         prop = prop_inc*i
         call cube_init(L, cube, prop)
         call write_cube(cube, L,  prop, i)
-        deallocate(cube)    
+        deallocate(cube) 
+        print *, 'cube', i   
     end do
 
     L = 4
@@ -45,13 +45,13 @@ program lattice
     no = floor(real(L**2)/2.0_dp)
     prop_inc = 1.0_dp/real(no)
 
-    do i = 0, no, 1
-        print *, i
-        prop = prop_inc*i
+    do j = 0, no, 1
+        prop = prop_inc*j
         call sheet_init(L, V, sheet, prop)
-        call write_sheet(sheet, L, V, prop, i)
+        call write_sheet(sheet, L, V, prop, j)
         deallocate(sheet)
     end do
+
     contains
 
     !> \brief Initialises a thin sheet of randomly-arranged atoms
@@ -203,6 +203,7 @@ program lattice
         real(kind=dp), intent(in)                           ::  prop
         integer, intent(in)                                 ::  L
         integer, intent(in)                                 ::  fileno
+        integer                                             ::  cellfile, datfile
         
         character(len=10), parameter                        ::  fmt1 = '(I3.3)'
         character(len=3)                                    ::  filename
@@ -218,42 +219,45 @@ program lattice
         
         write(filename, fmt1)  int(prop*100.0_dp)
         
-        open(unit=fileno, file='cube_'//filename//'.cell')
-        open(unit=900+fileno, file='cube_'//filename//'.dat')
+        cellfile = 10+fileno
+        datfile  = 50+fileno
+
+        open(unit=cellfile, file='cube_'//filename//'.cell')
+        open(unit=datfile, file='cube_'//filename//'.dat')
         
-        write(fileno, *) '%BLOCK LATTICE_CART'
-        write(fileno, *) cart, 0.0_dp, 0.0_dp
-        write(fileno, *) 0.0_dp, cart, 0.0_dp
-        write(fileno, *) 0.0_dp, 0.0_dp, cart
-        write(fileno, *) '%ENDBLOCK LATTICE_CART'
-        write(fileno, *)
+        write(cellfile, *) '%BLOCK LATTICE_CART'
+        write(cellfile, *) cart, 0.0_dp, 0.0_dp
+        write(cellfile, *) 0.0_dp, cart, 0.0_dp
+        write(cellfile, *) 0.0_dp, 0.0_dp, cart
+        write(cellfile, *) '%ENDBLOCK LATTICE_CART'
+        write(cellfile, *)
         
-        write(fileno, *) '%BLOCK POSITIONS_FRAC'
+        write(cellfile, *) '%BLOCK POSITIONS_FRAC'
         do x = 0,L-1,1
             do y = 0,L-1,1
                 do z = 0,L-1,1
-                    write(900+fileno,*) x, y, z, cube(x,y,z)
-                    if(cube(x,y,z)==0) write(fileno, *) 'O', x*step, y*step, z*step
-                    if(cube(x,y,z)==1) write(fileno, *) 'Ca', x*step, y*step, z*step
-                    if(cube(x,y,z)==2) write(fileno, *) 'Mg', x*step, y*step, z*step
+                    write(datfile,*) x, y, z, cube(x,y,z)
+                    if(cube(x,y,z)==0) write(cellfile, *) 'O', x*step, y*step, z*step
+                    if(cube(x,y,z)==1) write(cellfile, *) 'Ca', x*step, y*step, z*step
+                    if(cube(x,y,z)==2) write(cellfile, *) 'Mg', x*step, y*step, z*step
                 end do
             end do
         end do
-        write(fileno, *) '%ENDBLOCK POSITIONS_FRAC'
-        write(fileno, *)
+        write(cellfile, *) '%ENDBLOCK POSITIONS_FRAC'
+        write(cellfile, *)
         
-        write(fileno, *) 'kpoints_mp_grid', 3, 3, 3
+        write(cellfile, *) 'kpoints_mp_grid', 3, 3, 3
         
-        write(fileno, *) 'symmetry_generate'
+        write(cellfile, *) 'symmetry_generate'
         
-        write(fileno, *) '%BLOCK CELL_CONSTRAINTS'
-        write(fileno, *) 1, 1, 1
-        write(fileno, *) 0, 0, 0
+        write(cellfile, *) '%BLOCK CELL_CONSTRAINTS'
+        write(cellfile, *) 1, 1, 1
+        write(cellfile, *) 0, 0, 0
         
-        write(fileno, *) '%ENDBLOCK CELL_CONSTRAINTS'
+        write(cellfile, *) '%ENDBLOCK CELL_CONSTRAINTS'
         
-        close(unit=fileno)
-        close(unit=900+fileno)
+        close(unit=cellfile)
+        close(unit=datfile)
         
     end subroutine write_cube
 
@@ -270,6 +274,8 @@ program lattice
         integer, intent(in)                                 ::  L
         integer, intent(in)                                 ::  V
         integer, intent(in)                                 ::  fileno
+        integer                                             ::  cellfile
+        integer                                             ::  datfile
         
         character(len=10), parameter                        ::  fmt1 = '(I3.3)'
         character(len=3)                                    ::  filename
@@ -282,6 +288,9 @@ program lattice
         real(kind=dp)                                       ::  stepz
         real(kind=dp)                                       ::  cartz
         
+        cellfile = 10+fileno
+        datfile  = 50+fileno
+
         !Sets the lattice constants and steps in fractional coords in x,y
         step  = 1.0_dp/real(L)
         stepz = 1.0_dp/real(V)
@@ -291,45 +300,45 @@ program lattice
         
         write(filename, fmt1) int(prop*100.0_dp)
         
-        open(unit=fileno, file='sheet_'//filename//'.cell')
-        open(unit=900+fileno, file='sheet_'//filename//'.dat')
+        open(unit=cellfile, file='sheet_'//filename//'.cell')
+        open(unit=datfile, file='sheet_'//filename//'.dat')
         
-        write(fileno, *) '%BLOCK LATTICE_CART'
-        write(fileno, *) cart, 0.0_dp, 0.0_dp
-        write(fileno, *) 0.0_dp, cart, 0.0_dp
-        write(fileno, *) 0.0_dp, 0.0_dp, cartz
-        write(fileno, *) '%ENDBLOCK LATTICE_CART'
-        write(fileno, *)
+        write(cellfile, *) '%BLOCK LATTICE_CART'
+        write(cellfile, *) cart, 0.0_dp, 0.0_dp
+        write(cellfile, *) 0.0_dp, cart, 0.0_dp
+        write(cellfile, *) 0.0_dp, 0.0_dp, cartz
+        write(cellfile, *) '%ENDBLOCK LATTICE_CART'
+        write(cellfile, *)
         
-        write(fileno, *) '%BLOCK POSITIONS_FRAC'
+        write(cellfile, *) '%BLOCK POSITIONS_FRAC'
         do x = 0,L-1,1
             do y = 0,L-1,1
                 do z = 0,V-1,1
                     !if(sheet(x,y,z).lt.3)then
-                        write(900+fileno,*) x, y, z, sheet(x,y,z)
+                        write(datfile,*) x, y, z, sheet(x,y,z)
                         print *, x, y, z, sheet(x,y,z)
-                        if(sheet(x,y,z)==0) write(fileno, *) 'O', x*step, y*step, z*stepz
-                        if(sheet(x,y,z)==1) write(fileno, *) 'Ca', x*step, y*step, z*stepz
-                        if(sheet(x,y,z)==2) write(fileno, *) 'Mg', x*step, y*step, z*stepz
+                        if(sheet(x,y,z)==0) write(cellfile, *) 'O', x*step, y*step, z*stepz
+                        if(sheet(x,y,z)==1) write(cellfile, *) 'Ca', x*step, y*step, z*stepz
+                        if(sheet(x,y,z)==2) write(cellfile, *) 'Mg', x*step, y*step, z*stepz
                     !end if
                 end do
             end do
         end do
-        write(fileno, *) '%ENDBLOCK POSITIONS_FRAC'
-        write(fileno, *)
+        write(cellfile, *) '%ENDBLOCK POSITIONS_FRAC'
+        write(cellfile, *)
         
-        write(fileno, *) 'kpoints_mp_grid', 3, 3, 3
+        write(cellfile, *) 'kpoints_mp_grid', 3, 3, 3
         
-        write(fileno, *) 'symmetry_generate'
+        write(cellfile, *) 'symmetry_generate'
         
-        write(fileno, *) '%BLOCK CELL_CONSTRAINTS'
-        write(fileno, *) 1, 1, 0                    !The 0 fixes the vacuum by telling castep to not vary the z coordinates when figuring out the lattice
-        write(fileno, *) 0, 0, 0
+        write(cellfile, *) '%BLOCK CELL_CONSTRAINTS'
+        write(cellfile, *) 1, 1, 0                    !The 0 fixes the vacuum by telling castep to not vary the z coordinates when figuring out the lattice
+        write(cellfile, *) 0, 0, 0
         
-        write(fileno, *) '%ENDBLOCK CELL_CONSTRAINTS'
+        write(cellfile, *) '%ENDBLOCK CELL_CONSTRAINTS'
         
-        close(unit=fileno)
-        close(unit=900+fileno)
+        close(unit=cellfile)
+        close(unit=datfile)
         
     end subroutine write_sheet
 
