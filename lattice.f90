@@ -1,4 +1,4 @@
-!> @brief Fortran 2003 program to generate an initial lattice
+!> \brief Fortran 2003 program to generate an initial lattice
 !! 
 !! \todo Produce a pair of sheets with a vacuum between them
 !!
@@ -12,16 +12,16 @@ program lattice
     implicit none
     
     integer                                 ::  status
-    integer                                 ::  L                   !Length of edge of lattice
-    integer                                 ::  V                   !Length of cuboid in z direction, determines the size of the vacuum
-    integer                                 ::  N                   !No. of distances to try for sheets
+    integer                                 ::  L                   !< Length of edge of lattice
+    integer                                 ::  V                   !< Length of cuboid in z direction, determines the size of the vacuum
+    integer                                 ::  N                   !< No. of distances to try for sheets
     integer                                 ::  x, y, z, i
-    integer                                 ::  no                  !No. of runs
-    integer, dimension(:,:,:), allocatable  ::  sheet               !Array for thin sheets
-    integer, dimension(:,:,:), allocatable  ::  cube                !Array for random cube
+    integer                                 ::  no                  !< No. of runs
+    integer, dimension(:,:,:), allocatable  ::  sheet               !< Array for thin sheets
+    integer, dimension(:,:,:), allocatable  ::  cube                !< Array for random cube
     
-    real(kind=dp)                           ::  prop                !Proportion of 
-    real(kind=dp)                           ::  prop_inc            !Increment for the proportion
+    real(kind=dp)                           ::  prop                !< Proportion of metal
+    real(kind=dp)                           ::  prop_inc            !< Increment for the proportion
 
 
     L = 3
