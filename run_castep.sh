@@ -32,7 +32,7 @@ ARGS=$1
 #set job running
 
 
-yn="n"
+yn="y"
 latticetype="cube"
 
 ./lattice.exe
