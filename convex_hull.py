@@ -14,6 +14,9 @@ data = np.genfromtxt(file_name, usecols = (0, 1))
 #Number of points
 n = len(data)
 
+#Random data from between -1 and 1 (for further testing of algorithm)
+#data[:,1] = (np.random.rand(n))*2 -1
+
 #Write first data point to output - will always be a hull vertex
 convex_hull = open('convex_hull.dat', 'w')
 convex_hull.write("%f %f\n" % (data[0,0], data[0,1]))
@@ -29,7 +32,6 @@ while hv_new < n-1:
     for i in range (hv_new+1, n):
         #Angle measured from x-axis to line between data points, i.e. clockwise is positive
         theta = -1 * np.arctan((data[i,1] - data[hv_new,1])/(data[i,0] - data[hv_new,0]))
-        print theta, theta_max
         if theta > theta_max:
             theta_max = theta
             max_loc = i
