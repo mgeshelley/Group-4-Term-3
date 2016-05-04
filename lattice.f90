@@ -65,6 +65,8 @@ program lattice
 
         call srand(seed)        
 
+        atoms = L**2
+
         nme = ceiling(real(atoms, dp)/2.0_dp)
 
         nca = nint(prop*real(nme, dp))
@@ -89,8 +91,20 @@ program lattice
                             sheet(x,y,z) = 0
                         else if((z==0).or.(z==V-1))then!Sets it to Mg if it's in the bottom or top layers
                             sheet(x,y,z) = 2
-                        else if((z==1).or.(z==2))then!Sets it to Ca if it's in the 2 layers above the bottom layer
-                            sheet(x,y,z) = 1
+                        else if(z==1)then!Sets it to Ca if it's in the 2 layers above the bottom layer
+                            if((nca==1).and.(nmg==0))then!Sets atom to calcium if only one ca left
+                            cube(x,y,z) = 1
+                            nca = nca - 1
+                        else if((nca==0).and.(nmg==1))then!Sets atom to mg if only one mg left
+                            cube(x,y,z) = 2
+                            nmg = nmg - 1                   
+                        else if(prob.lt.(real(nca, dp)/(real(nca, dp)+real(nmg, dp))))then!Sets atom to calcium if probability is right
+                            cube(x,y,z) = 1
+                            nca = nca - 1
+                        else !Sets atom to magnesium
+                            cube(x,y,z) = 2
+                            nmg = nmg - 1
+                        end if
                         end if
                     end if                    
 
