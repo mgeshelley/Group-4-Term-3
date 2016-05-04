@@ -56,13 +56,15 @@ program lattice
 
         integer, intent(in)                                     ::  L, V                !L is length of side of sheet, V is 'length' really just the total height of structure
         integer, dimension(:,:,:), allocatable, intent(inout)   ::  sheet
-        integer                                                 ::  x, y, parity
+        integer                                                 ::  x, y, parity, seed
+        integer                                                 ::  atoms               !Total number of atoms in the one atom thick sheet interface 
         integer                                                 ::  nme, nca, nmg       !Total number of metal, calcium , magnesium atoms
 
         real(kind=dp), intent(inout)                            ::  prop                !Proportion of metal ions that are calcium atoms
         real(kind=dp)                                           ::  prob                !'Chance' of placing ca
 
-        
+        call srand(seed)        
+
         nme = ceiling(real(atoms, dp)/2.0_dp)
 
         nca = nint(prop*real(nme, dp))
