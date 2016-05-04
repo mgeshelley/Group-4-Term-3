@@ -46,6 +46,7 @@ program lattice
     prop_inc = 1.0_dp/real(no)
 
     do j = 0, no, 1
+        print *, 'sheet', j
         prop = prop_inc*j
         call sheet_init(L, V, sheet, prop)
         call write_sheet(sheet, L, V, prop, j)
@@ -94,25 +95,28 @@ program lattice
                 do z = 0, V-1, 1
                     !Determines odd or even
                     parity = modulo(x+y+z,2)
+                    prob = rand(seed)
                     if((z .le. 1).or.(z == V-1))then!If it's in the first two layers or the very top layer then it's not a vacuum
                         if(parity==1)then
                             sheet(x,y,z) = 0
-                        else if((z==0).or.(z==V-1))then!Sets it to Mg if it's in the bottom or top layers
+                        else if(z==1)then !Sets it to magnesium if it's in the bottom layer
                             sheet(x,y,z) = 2
-                        else if(z==1)then!Sets it to Ca if it's in the 2 layers above the bottom layer
+                        else if(z==V-1)then !Sets it to calcium if it's in the top layer
+                            sheet(x,y,z) = 1
+                        else if(z==0)then!Sets it to Ca if it's in the 2 layers above the bottom layer
                             if((nca==1).and.(nmg==0))then!Sets atom to calcium if only one ca left
-                            sheet(x,y,z) = 1
-                            nca = nca - 1
-                        else if((nca==0).and.(nmg==1))then!Sets atom to mg if only one mg left
-                            sheet(x,y,z) = 2
-                            nmg = nmg - 1                   
-                        else if(prob.lt.(real(nca, dp)/(real(nca, dp)+real(nmg, dp))))then!Sets atom to calcium if probability is right
-                            sheet(x,y,z) = 1
-                            nca = nca - 1
-                        else !Sets atom to magnesium
-                            sheet(x,y,z) = 2
-                            nmg = nmg - 1
-                        end if
+                                sheet(x,y,z) = 1
+                                nca = nca - 1
+                            else if((nca==0).and.(nmg==1))then!Sets atom to mg if only one mg left
+                                sheet(x,y,z) = 2
+                                nmg = nmg - 1                   
+                            else if(prob.lt.(real(nca, dp)/(real(nca, dp)+real(nmg, dp))))then!Sets atom to calcium if probability is right
+                                sheet(x,y,z) = 1
+                                nca = nca - 1
+                            else !Sets atom to magnesium
+                                sheet(x,y,z) = 2
+                                nmg = nmg - 1
+                            end if
                         end if
                     end if                    
 
@@ -316,7 +320,6 @@ program lattice
                 do z = 0,V-1,1
                     !if(sheet(x,y,z).lt.3)then
                         write(datfile,*) x, y, z, sheet(x,y,z)
-                        print *, x, y, z, sheet(x,y,z)
                         if(sheet(x,y,z)==0) write(cellfile, *) 'O', x*step, y*step, z*stepz
                         if(sheet(x,y,z)==1) write(cellfile, *) 'Ca', x*step, y*step, z*stepz
                         if(sheet(x,y,z)==2) write(cellfile, *) 'Mg', x*step, y*step, z*stepz
