@@ -16,12 +16,12 @@
 #$ -cwd
 
 #select max run-time
-#$ -l h_rt=00:30:00
+#$ -l h_rt=05:00:00
 
 #select parallel environment to run on nn cores, max 32 cores/node
-#$ -pe mpi-16 32
+#$ -pe mpi-16 128
 #set same value here too
-NUM_CORES=32
+NUM_CORES=128
 
 #name of MPI executable
 EXEC=castep.mpi
