@@ -16,7 +16,7 @@
 #$ -cwd
 
 #select max run-time
-#$ -l h_rt=00:05:00
+#$ -l h_rt=00:30:00
 
 #select parallel environment to run on nn cores, max 32 cores/node
 #$ -pe mpi-16 32
@@ -34,13 +34,10 @@ ARGS=$1
 
 yn="n"
 latticetype="cube"
-numcores=6
 
 ./lattice.exe
 
 for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
-    echo $name
-
     # Delete the old .castep file if yn is yes; default is to keep
     case $yn in
         [Yy]* ) rm -f "$name.castep";;
