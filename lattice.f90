@@ -50,13 +50,27 @@ program lattice
     !! \param[in] L (integer) length of a side of the sheet
     !! \param[in] V (integer) total height of the structure
     !! \param[out] sheet (integer array) the generated sheet
-    subroutine sheet_init(L, V, sheet)
+    subroutine sheet_init(L, V, sheet, prop)
 
         implicit none
 
         integer, intent(in)                                     ::  L, V                !L is length of side of sheet, V is 'length' really just the total height of structure
         integer, dimension(:,:,:), allocatable, intent(inout)   ::  sheet
         integer                                                 ::  x, y, parity
+        integer                                                 ::  nme, nca, nmg       !Total number of metal, calcium , magnesium atoms
+
+        real(kind=dp), intent(inout)                            ::  prop                !Proportion of metal ions that are calcium atoms
+        real(kind=dp)                                           ::  prob                !'Chance' of placing ca
+
+        
+        nme = ceiling(real(atoms, dp)/2.0_dp)
+
+        nca = nint(prop*real(nme, dp))
+
+        nmg = nme - nca
+
+
+        prop = real(nca)/real(nme)
 
         allocate(sheet(0:L-1,0:L-1,0:V-1), stat = status)
         if (status /= 0) stop "Error allocating sheet array"
@@ -68,7 +82,7 @@ program lattice
                 do z = 0, V-1, 1
                     !Determines odd or even
                     parity = modulo(x+y+z,2)
-                    if((z .le. 2).or.(z == V-1))then!If it's in the first three layers or the very top layer
+                    if((z .le. 1).or.(z == V-1))then!If it's in the first two layers or the very top layer then it's not a vacuum
                         if(parity==1)then
                             sheet(x,y,z) = 0
                         else if((z==0).or.(z==V-1))then!Sets it to Mg if it's in the bottom or top layers
@@ -284,7 +298,7 @@ program lattice
         write(fileno, *) 'symmetry_generate'
         
         write(fileno, *) '%BLOCK CELL_CONSTRAINTS'
-        write(fileno, *) 1, 1, 1
+        write(fileno, *) 1, 1, 0                    !The 0 fixes the vacuum by telling castep to not vary the z coordinates when figuring out the lattice
         write(fileno, *) 0, 0, 0
         
         write(fileno, *) '%ENDBLOCK CELL_CONSTRAINTS'
