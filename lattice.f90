@@ -40,10 +40,16 @@ program lattice
         deallocate(cube)    
     end do
 
-    !
-    !call sheet_init(L, 10, sheet)
-    !call write_sheet(sheet, L, 10, 0)
+    L = 4
 
+    no = floor(real(L**2)/2.0_dp)
+    prop_inc = 1.0_dp/real(no)
+
+    do i = 0, no, 1
+        prop = prop_inc*i
+        call sheet_init(L, V, sheet, prop)
+        call write_sheet(sheet, L, V, prop, i)
+    end do
     contains
 
     !> \brief Initialises a thin sheet of randomly-arranged atoms
@@ -254,7 +260,7 @@ program lattice
     !! \param[in] L (real) length of a side of the sheet
     !! \param[in] V (integer) total height of the structure
     !! \param[in] fileno (integer) the memory unit corresponding to the file to which to write
-    subroutine write_sheet(sheet, L, V, fileno)
+    subroutine write_sheet(sheet, L, V, prop, fileno)
     
         implicit none
         
@@ -268,6 +274,7 @@ program lattice
         
         integer                                             ::  x, y, z
         
+        real(kind=dp), intent(in)                           ::  prop
         real(kind=dp)                                       ::  step
         real(kind=dp)                                       ::  cart
         real(kind=dp)                                       ::  stepz
@@ -280,7 +287,7 @@ program lattice
         cart  = 4.2_dp*real(L)/2.0_dp
         cartz = 4.2_dp*real(V)/2.0_dp
         
-        write(filename, fmt1) fileno
+        write(filename, fmt1) int(prop*100.0_dp)
         
         open(unit=fileno, file='sheet_'//filename//'.cell')
         open(unit=900+fileno, file='sheet_'//filename//'.dat')
