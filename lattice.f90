@@ -40,10 +40,18 @@ program lattice
         deallocate(cube)    
     end do
 
-    !
-    !call sheet_init(L, 10, sheet)
-    !call write_sheet(sheet, L, 10, 0)
+    L = 4
 
+    no = floor(real(L**2)/2.0_dp)
+    prop_inc = 1.0_dp/real(no)
+
+    do i = 0, no, 1
+        print *, i
+        prop = prop_inc*i
+        call sheet_init(L, V, sheet, prop)
+        call write_sheet(sheet, L, V, prop, i)
+        deallocate(sheet)
+    end do
     contains
 
     !> \brief Initialises a thin sheet of randomly-arranged atoms
@@ -64,6 +72,8 @@ program lattice
         real(kind=dp)                                           ::  prob                !'Chance' of placing ca
 
         call srand(seed)        
+
+        atoms = L**2
 
         nme = ceiling(real(atoms, dp)/2.0_dp)
 
@@ -89,8 +99,20 @@ program lattice
                             sheet(x,y,z) = 0
                         else if((z==0).or.(z==V-1))then!Sets it to Mg if it's in the bottom or top layers
                             sheet(x,y,z) = 2
-                        else if((z==1).or.(z==2))then!Sets it to Ca if it's in the 2 layers above the bottom layer
+                        else if(z==1)then!Sets it to Ca if it's in the 2 layers above the bottom layer
+                            if((nca==1).and.(nmg==0))then!Sets atom to calcium if only one ca left
                             sheet(x,y,z) = 1
+                            nca = nca - 1
+                        else if((nca==0).and.(nmg==1))then!Sets atom to mg if only one mg left
+                            sheet(x,y,z) = 2
+                            nmg = nmg - 1                   
+                        else if(prob.lt.(real(nca, dp)/(real(nca, dp)+real(nmg, dp))))then!Sets atom to calcium if probability is right
+                            sheet(x,y,z) = 1
+                            nca = nca - 1
+                        else !Sets atom to magnesium
+                            sheet(x,y,z) = 2
+                            nmg = nmg - 1
+                        end if
                         end if
                     end if                    
 
@@ -240,7 +262,7 @@ program lattice
     !! \param[in] L (real) length of a side of the sheet
     !! \param[in] V (integer) total height of the structure
     !! \param[in] fileno (integer) the memory unit corresponding to the file to which to write
-    subroutine write_sheet(sheet, L, V, fileno)
+    subroutine write_sheet(sheet, L, V, prop, fileno)
     
         implicit none
         
@@ -254,6 +276,7 @@ program lattice
         
         integer                                             ::  x, y, z
         
+        real(kind=dp), intent(in)                           ::  prop
         real(kind=dp)                                       ::  step
         real(kind=dp)                                       ::  cart
         real(kind=dp)                                       ::  stepz
@@ -266,7 +289,7 @@ program lattice
         cart  = 4.2_dp*real(L)/2.0_dp
         cartz = 4.2_dp*real(V)/2.0_dp
         
-        write(filename, fmt1) fileno
+        write(filename, fmt1) int(prop*100.0_dp)
         
         open(unit=fileno, file='sheet_'//filename//'.cell')
         open(unit=900+fileno, file='sheet_'//filename//'.dat')
