@@ -24,7 +24,7 @@ for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
     cp base.param $name.param
 
     # Run CASTEP
-    time mpirun -np $numcores castep.mpi $name
+    ./run_castep_ebor.sh $name
 
     # Get energies from the output file
     grep 'total energy' "$name.castep"
