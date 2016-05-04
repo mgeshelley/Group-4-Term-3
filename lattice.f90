@@ -46,9 +46,11 @@ program lattice
     prop_inc = 1.0_dp/real(no)
 
     do i = 0, no, 1
+        print *, i
         prop = prop_inc*i
         call sheet_init(L, V, sheet, prop)
         call write_sheet(sheet, L, V, prop, i)
+        deallocate(sheet)
     end do
     contains
 
@@ -99,16 +101,16 @@ program lattice
                             sheet(x,y,z) = 2
                         else if(z==1)then!Sets it to Ca if it's in the 2 layers above the bottom layer
                             if((nca==1).and.(nmg==0))then!Sets atom to calcium if only one ca left
-                            cube(x,y,z) = 1
+                            sheet(x,y,z) = 1
                             nca = nca - 1
                         else if((nca==0).and.(nmg==1))then!Sets atom to mg if only one mg left
-                            cube(x,y,z) = 2
+                            sheet(x,y,z) = 2
                             nmg = nmg - 1                   
                         else if(prob.lt.(real(nca, dp)/(real(nca, dp)+real(nmg, dp))))then!Sets atom to calcium if probability is right
-                            cube(x,y,z) = 1
+                            sheet(x,y,z) = 1
                             nca = nca - 1
                         else !Sets atom to magnesium
-                            cube(x,y,z) = 2
+                            sheet(x,y,z) = 2
                             nmg = nmg - 1
                         end if
                         end if
