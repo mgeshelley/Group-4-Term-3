@@ -33,15 +33,15 @@ ARGS=$1
 
 
 yn="y"
-latticetype="cube"
+latticetype="sheet"
 
 ./lattice.exe
 
-#for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
+for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
 
 names=( cube_064 cube_078 cube_100 )
 
-for name in "${names[@]}"; do
+#for name in "${names[@]}"; do
 
     # Delete the old .castep file if yn is yes; default is to keep
     case $yn in

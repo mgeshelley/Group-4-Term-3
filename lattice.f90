@@ -40,7 +40,7 @@ program lattice
         print *, 'cube', i   
     end do
 
-    L = 4
+    L = 3
 
     no = floor(real(L**2)/2.0_dp)
     prop_inc = 1.0_dp/real(no)
