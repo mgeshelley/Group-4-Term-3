@@ -19,9 +19,9 @@
 #$ -l h_rt=05:00:00
 
 #select parallel environment to run on nn cores, max 32 cores/node
-#$ -pe mpi-16 128
+#$ -pe mpi-16 64
 #set same value here too
-NUM_CORES=128
+NUM_CORES=64
 
 #name of MPI executable
 EXEC=castep.mpi
@@ -37,7 +37,12 @@ latticetype="cube"
 
 ./lattice.exe
 
-for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
+#for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
+
+names=( 064 078 100 )
+
+for name in "${names[@]}"; do
+
     # Delete the old .castep file if yn is yes; default is to keep
     case $yn in
         [Yy]* ) rm -f "$name.castep";;
