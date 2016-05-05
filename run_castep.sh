@@ -39,7 +39,7 @@ latticetype="cube"
 
 #for name in $( ls $latticetype*.cell | sed 's/\(.*\)\..*/\1/' ); do
 
-names=( 064 078 100 )
+names=( cube_064 cube_078 cube_100 )
 
 for name in "${names[@]}"; do
 
