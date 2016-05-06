@@ -8,7 +8,7 @@ parameter being varied. Creates convex hull for data.
 """
 
 #Read in data
-file_name = 'madeup.dat'
+file_name = 'input.dat'
 data = np.genfromtxt(file_name, usecols = (0, 1))
 
 #Number of points
