@@ -1,0 +1,21 @@
+\providecommand{\newblock}{}
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+% Bibliography created with iopart-num v2.0
+% /biblio/bibtex/contrib/iopart-num
+
+\bibitem{kim2011lowtemperature}
+Kim M~G, Kanatzidis M~G, Facchetti A and Marks T~J 2011 {\em Nat. Mater.\/}
+  {\bf 10} 382--388
+
+\bibitem{clark2009first}
+Clark S~J, Segall M~D, Pickard C~J, Hasnip P~J, Probert M~I~J, Refson K and
+  Payne M~C 2009 {\em Z. F{\"u}r Krist.\/} {\bf 220} 567--570
+
+\bibitem{jarvis1973identification}
+Jarvis R~A 1973 {\em Inf. Process. Lett.\/} {\bf 2} 18--21
+
+\end{thebibliography}

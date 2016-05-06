@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+
+\bibliographystyle{iopart-num}
+
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[top=25mm,bottom=25mm,left=25mm,right=25mm]{geometry}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[nocompress]{cite}
+\usepackage[group-digits=integer]{siunitx}
+\usepackage[font={it}]{caption}
+\usepackage{placeins}
+\usepackage{booktabs}
+\usepackage{multicol}
+
+\title{Mixing MgO and CaO}
+\author{\textbf{Group 4}\\
+	James Quirk\\
+	Matthew Shelley\\
+	George Watson}
+\date{}
+
+\begin{document}
+\begin{multicols}{2}
+	\maketitle
+	
+	Metal oxides such as magnesium and calcium oxide are of interest in solid state physics as they have a wide range of applications in thin film electronics such as flat-panel displays and flexible circuitry and sensors.\cite{kim2011lowtemperature} It is desirable to model the deposition of CaO onto MgO to determine if it is feasible to fabricate components consisting of an alloy of MgO and CaO or a deposition of one upon the other.
+	
+	CASTEP\cite{clark2009first} was used to simulate systems of multiple different configurations. The first of these was a cube of randomly-arranged Mg and Ca in specified proportions; due to the periodic boundary conditions, this represents an infinite crystal lattice and allows the bulk properties of the substance for a given proportion to be considered. A one-atom-thick sheet of each material with a third one-atom-thick sheet of random atoms between them was then considered; this represents an infinite interface between two single sheets in a vacuum.
+	
+	Due to the periodic boundaries the simulation was actually modelling an infinite series of thin sheets. This is obviously unrealistic as CASTEP was considering interactions between each of these sheets. However, as this was the same for all runs the effect should cancel out and the minimum energy should still represent 
+	
+	At the temperatures that components would be fabricated there is the potential for atoms to move and swap places.
+	
+	The convex hull method\cite{jarvis1973identification} was used to help draw conclusions about the lowest energy configurations for varying proportions. It involves drawing the convex shape with the smallest area around the data set, in this case only on the lower energy side (energy minimisation is the goal of the experiment). The method can be used to show that, for a given proportion $x$ of Mg / Ca, with an energy well inside the convex hull, it may be more energetically favourable for the material to be made from two separate sections with different proportions (overall proportion still equal to $x$), rather than a homogenous mixture with proportion $x$.
+	
+% % RESULTS
+
+	The results generated represent upper bounds of the energies These results could be improved by using the geometry optimisation feature of CASTEP. This will vary the exact locations of particles in the lattice to find the most energetically favourable configuration. This is extremely computationally expensive but would be possible with more time and reliable access to a supercomputer or cluster.
+	
+\bibliography{bibliography}
+
+\end{multicols}
+\end{document}
