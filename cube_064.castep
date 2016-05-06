@@ -1,0 +1,853 @@
+ +-------------------------------------------------+
+ |                                                 |
+ |      CCC   AA    SSS  TTTTT  EEEEE  PPPP        |
+ |     C     A  A  S       T    E      P   P       |
+ |     C     AAAA   SS     T    EEE    PPPP        |
+ |     C     A  A     S    T    E      P           |
+ |      CCC  A  A  SSS     T    EEEEE  P           |
+ |                                                 |
+ +-------------------------------------------------+
+ |                                                 |
+ | Welcome to Academic Release CASTEP version 9.0  |
+ | Ab Initio Total Energy Program                  |
+ |                                                 |
+ | Authors:                                        |
+ | M. Segall, M. Probert, C. Pickard, P. Hasnip,   |
+ | S. Clark, K. Refson, J. R. Yates, M. Payne      |
+ |                                                 |
+ | Contributors:                                   |
+ | P. Lindan, P. Haynes, J. White, V. Milman,      |
+ | N. Govind, M. Gibson, P. Tulip, V. Cocula,      |
+ | B. Montanari, D. Quigley, M. Glover,            |
+ | L. Bernasconi, A. Perlov, M. Plummer,           |
+ | E. McNellis, J. Meyer, J. Gale, D. Jochym       |
+ | J. Aarons, B. Walker, R. Gillen, D. Jones       |
+ | T. Green, I. J. Bush, C. J. Armstrong,          |
+ | E. J. Higgins, M. D. Hodgson                    |
+ |                                                 |
+ | Copyright (c) 2000 - 2015                       |
+ |                                                 |
+ |     Distributed under the terms of an           |
+ |     Agreement between the United Kingdom        |
+ |     Car-Parrinello (UKCP) Consortium,           |
+ |     Daresbury Laboratory and Accelrys, Inc.     |
+ |                                                 |
+ | Please cite                                     |
+ |                                                 |
+ |     "First principles methods using CASTEP"     |
+ |                                                 |
+ |         Zeitschrift fuer Kristallographie       |
+ |           220(5-6) pp. 567-570 (2005)           |
+ |                                                 |
+ | S. J. Clark, M. D. Segall, C. J. Pickard,       |
+ | P. J. Hasnip, M. J. Probert, K. Refson,         |
+ | M. C. Payne                                     |
+ |                                                 |
+ |       in all publications arising from          |
+ |              your use of CASTEP                 |
+ |                                                 |
+ +-------------------------------------------------+
+ 
+ 
+ Compiled for linux_x86_64_ifort12 on Fri, 09 Oct 2015 16:14:59 +0100
+ from code version 01cdeb6dcbec+  Thu, 01 Oct 2015 17:06:55 +0100
+ Compiler: Intel Fortran 12.1.5.339; Optimisation: fast
+ MATHLIBS: Intel MKL(11.0.5) (LAPACK version 3.4.1)
+ FFT Lib : default
+ Fundamental constants values: CODATA 2010
+ 
+ Run started: Fri, 06 May 2016 16:02:16 +0100
+ 
+ Atomic calculation performed for O: 1s2 2s2 2p4
+ 
+ Converged in 60 iterations to an ae energy of -2027.926 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation  6-05-2016   |                
+   ------------------------------------------------------------                
+   | Element: O Ionic charge:  6.00 Level of theory: LDA      |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            2s              2.000           -0.873        |                
+   |            2p              4.000           -0.338        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -0.873   1.100     qc      0         |                
+   |          2      0    0.250   1.100     qc      0         |                
+   |          3      1   -0.338   1.100     qc      0         |                
+   |          4      1    0.250   1.100     qc      0         |                
+   |         loc     2    0.000   1.100     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 0.769                       |                
+   | Partial core correction Rc = 0.769                       |                
+   ------------------------------------------------------------                
+   | "2|1.1|15|18|20|20:21(qc=7)"                             |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Atomic calculation performed for Mg: 1s2 2s2 2p6 3s2
+ 
+ Converged in 47 iterations to an ae energy of -5427.407 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation  6-05-2016   |                
+   ------------------------------------------------------------                
+   | Element: Mg Ionic charge: 10.00 Level of theory: LDA     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            2s              2.000           -2.914        |                
+   |            2p              6.000           -1.717        |                
+   |            3s              2.000           -0.176        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -2.914   1.804     qc      0         |                
+   |          2      0   -0.176   1.804     qc      0         |                
+   |          3      0    0.250   1.804     qc      0         |                
+   |          4      1   -1.717   1.804     qc      0         |                
+   |          5      1    0.250   1.804     qc      0         |                
+   |          6      2    0.000   1.804     qc      0         |                
+   |          7      2    0.250   1.804     qc      0         |                
+   |         loc     3    0.000   1.804     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.261                       |                
+   | Partial core correction Rc = 1.261                       |                
+   ------------------------------------------------------------                
+   | "3|1.8|7|8|9|20U:30:21:32"                               |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Atomic calculation performed for Ca: 1s2 2s2 2p6 3s2 3p6 4s2
+ 
+ Converged in 44 iterations to an ae energy of -18468.059 eV
+ 
+   ============================================================                
+   | Pseudopotential Report - Date of generation  6-05-2016   |                
+   ------------------------------------------------------------                
+   | Element: Ca Ionic charge: 10.00 Level of theory: LDA     |                
+   | Atomic Solver: Koelling-Harmon                           |                
+   |                                                          |                
+   |               Reference Electronic Structure             |                
+   |         Orbital         Occupation         Energy        |                
+   |            3s              2.000           -1.721        |                
+   |            3p              6.000           -1.028        |                
+   |            4s              2.000           -0.142        |                
+   |                                                          |                
+   |                 Pseudopotential Definition               |                
+   |        Beta     l      e      Rc     scheme   norm       |                
+   |          1      0   -1.721   2.005     qc      0         |                
+   |          2      0   -0.142   2.005     qc      0         |                
+   |          3      0    0.250   2.005     qc      0         |                
+   |          4      1   -1.028   2.005     qc      0         |                
+   |          5      1    0.250   2.005     qc      0         |                
+   |          6      2    0.000   2.005     qc      0         |                
+   |          7      2    0.250   2.005     qc      0         |                
+   |         loc     3    0.000   2.005     pn      0         |                
+   |                                                          |                
+   | Augmentation charge Rinner = 1.401                       |                
+   | Partial core correction Rc = 1.401                       |                
+   ------------------------------------------------------------                
+   | "3|2.0|7|8|9|30U:40:31:32"                               |                
+   ------------------------------------------------------------                
+   |      Author: Chris J. Pickard, Cambridge University      |                
+   ============================================================                
+ 
+ Pseudo atomic calculation performed for O 2s2 2p4
+ 
+ Converged in 30 iterations to a total energy of -431.4734 eV
+ 
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 24 iterations to a total energy of -1684.7158 eV
+ 
+ 
+ Pseudo atomic calculation performed for Ca 3s2 3p6 4s2
+ 
+ Converged in 24 iterations to a total energy of -1001.6116 eV
+ 
+ Calculation parallelised over 3 processes.
+ Data is distributed by k-point(3-way)
+
+ ************************************ Title ************************************
+ MgO
+
+ ***************************** General Parameters ******************************
+  
+ output verbosity                               : normal  (1)
+ write checkpoint data to                       : cube_064.check
+ type of calculation                            : single point energy
+ stress calculation                             : on
+ density difference calculation                 : off
+ electron localisation func (ELF) calculation   : off
+ Hirshfeld analysis                             : off
+ unlimited duration calculation
+ timing information                             : on
+ memory usage estimate                          : on
+ write final potential to formatted file        : off
+ write final density to formatted file          : off
+ write BibTeX reference list                    : on
+ write OTFG pseudopotential files               : on
+ checkpoint writing                             : both castep_bin and check files
+  
+ output         length unit                     : A
+ output           mass unit                     : amu
+ output           time unit                     : ps
+ output         charge unit                     : e
+ output           spin unit                     : hbar/2
+ output         energy unit                     : eV
+ output          force unit                     : eV/A
+ output       velocity unit                     : A/ps
+ output       pressure unit                     : GPa
+ output     inv_length unit                     : 1/A
+ output      frequency unit                     : cm-1
+ output force constant unit                     : eV/A**2
+ output         volume unit                     : A**3
+ output   IR intensity unit                     : (D/A)**2/amu
+ output         dipole unit                     : D
+ output         efield unit                     : eV/A/e
+ output        entropy unit                     : J/mol/K
+  
+ wavefunctions paging                           : none
+ random number generator seed                   : randomised (160216587)
+ data distribution                              : optimal for this architecture
+ optimization strategy                          : maximize speed(+++)
+
+ *********************** Exchange-Correlation Parameters ***********************
+  
+ using functional                               : Local Density Approximation
+ relativistic treatment                         : Koelling-Harmon
+ DFT+D: Semi-empirical dispersion correction    : off
+
+ ************************* Pseudopotential Parameters **************************
+  
+ pseudopotential representation                 : reciprocal space
+ <beta|phi> representation                      : reciprocal space
+ spin-orbit coupling                            : off
+
+ **************************** Basis Set Parameters *****************************
+  
+ plane wave basis set cut-off                   :   490.0000   eV
+ size of standard grid                          :     2.0000
+ size of   fine   gmax                          :    22.6812   1/A
+ finite basis set correction                    : automatic
+ number of sample energies                      :          3
+           sample  spacing                      :     5.0000   eV
+
+ **************************** Electronic Parameters ****************************
+  
+ number of  electrons                           :  218.0    
+ net charge of system                           :  0.000    
+ treating system as non-spin-polarized
+ number of bands                                :        131
+
+ ********************* Electronic Minimization Parameters **********************
+  
+ Method: Treating system as metallic with density mixing treatment of electrons,
+         and number of  SD  steps               :          1
+         and number of  CG  steps               :          4
+  
+ total energy / atom convergence tol.           : 0.1000E-06   eV
+ eigen-energy convergence tolerance             : 0.2477E-07   eV
+ max force / atom convergence tol.              : ignored
+ convergence tolerance window                   :          3   cycles
+ max. number of SCF cycles                      :         60
+ number of fixed-spin iterations                :         10
+ smearing scheme                                : Gaussian
+ smearing width                                 : 0.2000       eV
+ Fermi energy convergence tolerance             : 0.2721E-13   eV
+ periodic dipole correction                     : NONE
+
+ ************************** Density Mixing Parameters **************************
+  
+ density-mixing scheme                          : Pulay
+ max. length of mixing history                  :         30
+ charge density mixing amplitude                : 0.8000    
+ cut-off energy for mixing                      :  490.0       eV
+
+ *********************** Population Analysis Parameters ************************
+  
+ Population analysis with cutoff                :  3.000       A
+
+ *******************************************************************************
+  
+ 
+                           -------------------------------
+                                      Unit Cell
+                           -------------------------------
+        Real Lattice(A)                      Reciprocal Lattice(1/A)
+   6.3000000   0.0000000   0.0000000        0.9973310   0.0000000   0.0000000
+   0.0000000   6.3000000   0.0000000        0.0000000   0.9973310   0.0000000
+   0.0000000   0.0000000   6.3000000        0.0000000   0.0000000   0.9973310
+ 
+                       Lattice parameters(A)       Cell Angles
+                    a =    6.300000          alpha =   90.000000
+                    b =    6.300000          beta  =   90.000000
+                    c =    6.300000          gamma =   90.000000
+ 
+                       Current cell volume =  250.047000       A**3
+ 
+                           -------------------------------
+                                     Cell Contents
+                           -------------------------------
+                         Total number of ions in cell =   27
+                      Total number of species in cell =    3
+                        Max number of any one species =   13
+ 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            x  Element    Atom        Fractional coordinates of atoms  x
+            x            Number           u          v          w      x
+            x----------------------------------------------------------x
+            x  O            1         0.000000   0.000000   0.333333   x 
+            x  O            2         0.000000   0.333333   0.000000   x 
+            x  O            3         0.000000   0.333333   0.666667   x 
+            x  O            4         0.000000   0.666667   0.333333   x 
+            x  O            5         0.333333   0.000000   0.000000   x 
+            x  O            6         0.333333   0.000000   0.666667   x 
+            x  O            7         0.333333   0.333333   0.333333   x 
+            x  O            8         0.333333   0.666667   0.000000   x 
+            x  O            9         0.333333   0.666667   0.666667   x 
+            x  O           10         0.666667   0.000000   0.333333   x 
+            x  O           11         0.666667   0.333333   0.000000   x 
+            x  O           12         0.666667   0.333333   0.666667   x 
+            x  O           13         0.666667   0.666667   0.333333   x 
+            x  Mg           1         0.666667   0.000000   0.000000   x 
+            x  Mg           2         0.666667   0.000000   0.666667   x 
+            x  Mg           3         0.666667   0.333333   0.333333   x 
+            x  Mg           4         0.666667   0.666667   0.000000   x 
+            x  Mg           5         0.666667   0.666667   0.666667   x 
+            x  Ca           1         0.000000   0.000000   0.000000   x 
+            x  Ca           2         0.000000   0.000000   0.666667   x 
+            x  Ca           3         0.000000   0.333333   0.333333   x 
+            x  Ca           4         0.000000   0.666667   0.000000   x 
+            x  Ca           5         0.000000   0.666667   0.666667   x 
+            x  Ca           6         0.333333   0.000000   0.333333   x 
+            x  Ca           7         0.333333   0.333333   0.000000   x 
+            x  Ca           8         0.333333   0.333333   0.666667   x 
+            x  Ca           9         0.333333   0.666667   0.333333   x 
+            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 
+ 
+                         No user defined ionic velocities
+ 
+                           -------------------------------
+                                   Details of Species
+                           -------------------------------
+ 
+                               Mass of species in AMU
+                                    O   15.9994000
+                                    Mg   24.3050000
+                                    Ca   40.0780000
+ 
+                          Electric Quadrupole Moment (Barn)
+                                    O   -0.0255800 Isotope 17
+                                    Mg    0.1994000 Isotope 25
+                                    Ca   -0.0408000 Isotope 43
+ 
+                          Files used for pseudopotentials:
+                                    O 2|1.1|15|18|20|20:21(qc=7)
+                                    Mg 3|1.8|7|8|9|20U:30:21:32
+                                    Ca 3|2.0|7|8|9|30U:40:31:32
+ 
+                           -------------------------------
+                              k-Points For BZ Sampling
+                           -------------------------------
+                       MP grid size for SCF calculation is  3  3  3
+                            with an offset of   0.000  0.000  0.000
+                       Number of kpoints used =             6
+ 
+                           -------------------------------
+                               Symmetry and Constraints
+                           -------------------------------
+ 
+                      Maximum deviation from symmetry =  0.00000         ANG
+ 
+                      Number of symmetry operations   =           8
+                      Number of ionic constraints     =           3
+                      Point group of crystal =    12: C4v, 4mm, 4 mm
+                      Space group of crystal =    99: P4mm, P 4 -2
+ 
+             Set iprint > 1 for details on symmetry rotations/translations
+ 
+                         Centre of mass is constrained
+             Set iprint > 1 for details of linear ionic constraints
+ 
+                         Number of cell constraints= 5
+                         Cell constraints are:  1 1 1 0 0 0
+ 
+                         External pressure/stress (GPa)
+                          0.00000   0.00000   0.00000
+                                    0.00000   0.00000
+                                              0.00000
+  
++---------------- MEMORY AND SCRATCH DISK ESTIMATES PER PROCESS --------------+
+|                                                     Memory          Disk    |
+| Baseline code, static data and system overhead      212.0 MB         0.0 MB |
+| BLAS internal memory storage                          0.0 MB         0.0 MB |
+| Model and support data                              488.5 MB         0.0 MB |
+| Electronic energy minimisation requirements          81.8 MB         0.0 MB |
+| Force calculation requirements                       14.3 MB         0.0 MB |
+| Stress calculation requirements                      16.9 MB         0.0 MB |
+|                                               ----------------------------- |
+| Approx. total storage required per process          782.3 MB         0.0 MB |
+|                                                                             |
+| Requirements will fluctuate during execution and may exceed these estimates |
++-----------------------------------------------------------------------------+
+Calculating finite basis set correction with  3 cut-off energies.
+Calculating total energy with cut-off of  480.000eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -1.88242769E+004  0.00000000E+000                        16.33  <-- SCF
+      1  -2.25257704E+004  9.91915991E+000   1.37092351E+002      26.83  <-- SCF
+      2  -2.31634182E+004  7.84861896E+000   2.36165827E+001      34.70  <-- SCF
+      3  -2.31854907E+004  7.45396679E+000   8.17503568E-001      42.72  <-- SCF
+      4  -2.31983543E+004  1.05637764E+001   4.76429249E-001      53.13  <-- SCF
+      5  -2.31651981E+004  9.22784923E+000  -1.22800807E+000      63.84  <-- SCF
+      6  -2.31623924E+004  9.09371029E+000  -1.03914627E-001      74.46  <-- SCF
+      7  -2.31620625E+004  9.20986388E+000  -1.22209083E-002      84.94  <-- SCF
+      8  -2.31615301E+004  9.18627551E+000  -1.97159179E-002      95.06  <-- SCF
+      9  -2.31614654E+004  9.23732660E+000  -2.39611285E-003     105.59  <-- SCF
+     10  -2.31614338E+004  9.21767195E+000  -1.17248164E-003     115.83  <-- SCF
+     11  -2.31614314E+004  9.20922337E+000  -8.63677744E-005     126.32  <-- SCF
+     12  -2.31614306E+004  9.21441809E+000  -3.06554386E-005     136.54  <-- SCF
+     13  -2.31614306E+004  9.21394047E+000  -2.49595753E-006     145.83  <-- SCF
+     14  -2.31614305E+004  9.21396445E+000  -2.07638437E-007     153.57  <-- SCF
+     15  -2.31614305E+004  9.21401663E+000  -9.52958999E-009     160.88  <-- SCF
+     16  -2.31614305E+004  9.21399928E+000   1.92374616E-010     168.12  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23161.18455528     eV
+Final free energy (E-TS)    =  -23161.43054518     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23161.30755023     eV
+ 
+Calculating total energy with cut-off of  485.000eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.31611846E+004  0.00000000E+000                       171.68  <-- SCF
+      1  -2.31617926E+004  9.20930158E+000   2.25217123E-002     179.91  <-- SCF
+      2  -2.31617928E+004  9.20929820E+000   5.93291819E-006     189.12  <-- SCF
+      3  -2.31617948E+004  9.22025482E+000   7.55412904E-005     199.54  <-- SCF
+      4  -2.31618145E+004  9.19185156E+000   7.26256854E-004     210.05  <-- SCF
+      5  -2.31617959E+004  9.21027916E+000  -6.87420574E-004     220.38  <-- SCF
+      6  -2.31617926E+004  9.21315352E+000  -1.20661969E-004     230.63  <-- SCF
+      7  -2.31617928E+004  9.21191192E+000   6.69404784E-006     240.34  <-- SCF
+      8  -2.31617926E+004  9.21370963E+000  -7.88410185E-006     249.84  <-- SCF
+      9  -2.31617926E+004  9.21293534E+000  -5.02852467E-007     259.09  <-- SCF
+     10  -2.31617926E+004  9.21266167E+000  -6.58387516E-008     267.14  <-- SCF
+     11  -2.31617926E+004  9.21295741E+000  -2.40606909E-008     274.41  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23161.54645624     eV
+Final free energy (E-TS)    =  -23161.79258384     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23161.66952004     eV
+ 
+Calculating total energy with cut-off of  490.000eV.
+------------------------------------------------------------------------ <-- SCF
+SCF loop      Energy           Fermi           Energy gain       Timer   <-- SCF
+                               energy          per atom          (sec)   <-- SCF
+------------------------------------------------------------------------ <-- SCF
+Initial  -2.31615465E+004  0.00000000E+000                       277.92  <-- SCF
+      1  -2.31622584E+004  9.20865978E+000   2.63687285E-002     286.17  <-- SCF
+      2  -2.31622586E+004  9.20865832E+000   6.25504037E-006     295.23  <-- SCF
+      3  -2.31622606E+004  9.22130382E+000   7.50655724E-005     305.19  <-- SCF
+      4  -2.31622816E+004  9.19268071E+000   7.77566609E-004     315.31  <-- SCF
+      5  -2.31622623E+004  9.20915348E+000  -7.14969043E-004     325.29  <-- SCF
+      6  -2.31622583E+004  9.21332796E+000  -1.46327097E-004     335.24  <-- SCF
+      7  -2.31622585E+004  9.21261108E+000   6.83063749E-006     344.63  <-- SCF
+      8  -2.31622584E+004  9.21464467E+000  -6.66218332E-006     353.80  <-- SCF
+      9  -2.31622583E+004  9.21352229E+000  -9.71664022E-007     362.83  <-- SCF
+     10  -2.31622583E+004  9.21314895E+000  -7.00323808E-008     370.64  <-- SCF
+     11  -2.31622583E+004  9.21345595E+000  -2.89516350E-008     377.76  <-- SCF
+------------------------------------------------------------------------ <-- SCF
+ 
+Final energy, E             =  -23162.01179324     eV
+Final free energy (E-TS)    =  -23162.25832165     eV
+(energies not corrected for finite basis set)
+ 
+NB est. 0K energy (E-0.5TS)      =  -23162.13505745     eV
+ 
+ For future reference: finite basis dEtot/dlog(Ecut) =     -40.296340eV
+ Total energy corrected for finite basis set =  -23162.260388 eV
+ 
+ ***************** Symmetrised Forces *****************
+ *                                                    *
+ *            Cartesian components (eV/A)             *
+ * -------------------------------------------------- *
+ *                   x            y            z      *
+ *                                                    *
+ * O         1      2.21104      2.12075      0.00000 *
+ * O         2      2.21104      0.00000      2.12075 *
+ * O         3      2.21104      0.00000     -2.12075 *
+ * O         4      2.21104     -2.12075      0.00000 *
+ * O         5      0.87572      2.00396      2.00396 *
+ * O         6      0.87572      2.00396     -2.00396 *
+ * O         7      0.85478      0.00000      0.00000 *
+ * O         8      0.87572     -2.00396      2.00396 *
+ * O         9      0.87572     -2.00396     -2.00396 *
+ * O        10     -1.06981      3.93826      0.00000 *
+ * O        11     -1.06981      0.00000      3.93826 *
+ * O        12     -1.06981      0.00000     -3.93826 *
+ * O        13     -1.06981     -3.93826      0.00000 *
+ * Mg        1     -6.54883      6.33564      6.33564 *
+ * Mg        2     -6.54883      6.33564     -6.33564 *
+ * Mg        3     -4.62052      0.00000      0.00000 *
+ * Mg        4     -6.54883     -6.33564      6.33564 *
+ * Mg        5     -6.54883     -6.33564     -6.33564 *
+ * Ca        1      4.65877      6.25986      6.25986 *
+ * Ca        2      4.65877      6.25986     -6.25986 *
+ * Ca        3      1.20114      0.00000      0.00000 *
+ * Ca        4      4.65877     -6.25986      6.25986 *
+ * Ca        5      4.65877     -6.25986     -6.25986 *
+ * Ca        6      0.51426      4.61554      0.00000 *
+ * Ca        7      0.51426      0.00000      4.61554 *
+ * Ca        8      0.51426      0.00000     -4.61554 *
+ * Ca        9      0.51426     -4.61554      0.00000 *
+ *                                                    *
+ ******************************************************
+ 
+ *********** Symmetrised Stress Tensor ***********
+ *                                               *
+ *          Cartesian components (GPa)           *
+ * --------------------------------------------- *
+ *             x             y             z     *
+ *                                               *
+ *  x    -68.720741      0.000000      0.000000  *
+ *  y      0.000000    -76.257907      0.000000  *
+ *  z      0.000000      0.000000    -76.257907  *
+ *                                               *
+ *  Pressure:   73.7455                          *
+ *                                               *
+ *************************************************
+ 
+ Pseudo atomic calculation performed for O 2s2 2p4
+ 
+ Converged in 30 iterations to a total energy of -431.4734 eV
+ 
+ 
+ Pseudo atomic calculation performed for Mg 2s2 2p6 3s2
+ 
+ Converged in 24 iterations to a total energy of -1684.7158 eV
+ 
+ 
+ Pseudo atomic calculation performed for Ca 3s2 3p6 4s2
+ 
+ Converged in 24 iterations to a total energy of -1001.6116 eV
+ 
+Charge spilling parameter for spin component 1 = 0.32%
+ 
+     Atomic Populations (Mulliken)
+     -----------------------------
+Species   Ion     s      p      d      f     Total  Charge (e)
+==============================================================
+  O        1     1.86   4.79   0.00   0.00   6.66    -0.66
+  O        2     1.86   4.79   0.00   0.00   6.66    -0.66
+  O        3     1.86   4.79   0.00   0.00   6.66    -0.66
+  O        4     1.86   4.79   0.00   0.00   6.66    -0.66
+  O        5     1.86   4.82   0.00   0.00   6.68    -0.68
+  O        6     1.86   4.82   0.00   0.00   6.68    -0.68
+  O        7     1.83   4.97   0.00   0.00   6.79    -0.79
+  O        8     1.86   4.82   0.00   0.00   6.68    -0.68
+  O        9     1.86   4.82   0.00   0.00   6.68    -0.68
+  O       10     1.86   4.88   0.00   0.00   6.74    -0.74
+  O       11     1.86   4.88   0.00   0.00   6.74    -0.74
+  O       12     1.86   4.88   0.00   0.00   6.74    -0.74
+  O       13     1.86   4.88   0.00   0.00   6.74    -0.74
+  Mg       1     2.52   7.00   0.00   0.00   9.52     0.48
+  Mg       2     2.52   7.00   0.00   0.00   9.52     0.48
+  Mg       3     2.52   6.83   0.00   0.00   9.35     0.65
+  Mg       4     2.52   7.00   0.00   0.00   9.52     0.48
+  Mg       5     2.52   7.00   0.00   0.00   9.52     0.48
+  Ca       1     2.00   5.88   1.52   0.00   9.40     0.60
+  Ca       2     2.00   5.88   1.52   0.00   9.40     0.60
+  Ca       3     2.09   5.94   1.11   0.00   9.14     0.86
+  Ca       4     2.00   5.88   1.52   0.00   9.40     0.60
+  Ca       5     2.00   5.88   1.52   0.00   9.40     0.60
+  Ca       6     2.18   5.94   1.07   0.00   9.18     0.82
+  Ca       7     2.18   5.94   1.07   0.00   9.18     0.82
+  Ca       8     2.18   5.94   1.07   0.00   9.18     0.82
+  Ca       9     2.18   5.94   1.07   0.00   9.18     0.82
+==============================================================
+ 
+            Bond              Population      Length (A)
+============================================================
+         O 13 -- Ca 9              0.15        2.10000
+         O 13 -- Mg 5              0.66        2.10000
+         O 13 -- Mg 4              0.66        2.10000
+         O 13 -- Mg 3              0.27        2.10000
+         O 12 -- Ca 8              0.15        2.10000
+         O 12 -- Mg 5              0.66        2.10000
+         O 12 -- Mg 3              0.27        2.10000
+         O 12 -- Mg 2              0.66        2.10000
+         O 11 -- Ca 7              0.15        2.10000
+         O 11 -- Mg 4              0.66        2.10000
+         O 11 -- Mg 3              0.27        2.10000
+         O 11 -- Mg 1              0.66        2.10000
+         O 10 -- Ca 6              0.15        2.10000
+         O 10 -- Mg 3              0.27        2.10000
+         O 10 -- Mg 2              0.66        2.10000
+         O 10 -- Mg 1              0.66        2.10000
+         O 9  -- Ca 9              0.14        2.10000
+         O 9  -- Ca 8              0.14        2.10000
+         O 9  -- Ca 5              0.49        2.10000
+         O 9  -- Mg 5              0.70        2.10000
+         O 8  -- Ca 9              0.14        2.10000
+         O 8  -- Ca 7              0.14        2.10000
+         O 8  -- Ca 4              0.49        2.10000
+         O 8  -- Mg 4              0.70        2.10000
+         O 7  -- Ca 9              0.12        2.10000
+         O 7  -- Ca 8              0.12        2.10000
+         O 7  -- Ca 7              0.12        2.10000
+         O 7  -- Ca 6              0.12        2.10000
+         O 7  -- Ca 3              0.24        2.10000
+         O 7  -- Mg 3              0.16        2.10000
+         O 6  -- Ca 8              0.14        2.10000
+         O 6  -- Ca 6              0.14        2.10000
+         O 6  -- Ca 2              0.49        2.10000
+         O 6  -- Mg 2              0.70        2.10000
+         O 5  -- Ca 7              0.14        2.10000
+         O 5  -- Ca 6              0.14        2.10000
+         O 5  -- Ca 1              0.49        2.10000
+         O 5  -- Mg 1              0.70        2.10000
+         O 4  -- Ca 9              0.15        2.10000
+         O 4  -- Ca 5              0.34        2.10000
+         O 4  -- Ca 4              0.34        2.10000
+         O 4  -- Ca 3              0.15        2.10000
+         O 3  -- Ca 8              0.15        2.10000
+         O 3  -- Ca 5              0.34        2.10000
+         O 3  -- Ca 3              0.15        2.10000
+         O 3  -- Ca 2              0.34        2.10000
+         O 2  -- Ca 7              0.15        2.10000
+         O 2  -- Ca 4              0.34        2.10000
+         O 2  -- Ca 3              0.15        2.10000
+         O 2  -- Ca 1              0.34        2.10000
+         O 1  -- Ca 6              0.15        2.10000
+         O 1  -- Ca 3              0.15        2.10000
+         O 1  -- Ca 2              0.34        2.10000
+         O 1  -- Ca 1              0.34        2.10000
+         Ca 7 -- Ca 8             -0.40        2.10000
+         Ca 6 -- Ca 9             -0.40        2.10000
+         Ca 4 -- Ca 5             -0.80        2.10000
+         Ca 2 -- Ca 5             -0.80        2.10000
+         Ca 1 -- Ca 4             -0.80        2.10000
+         Ca 1 -- Ca 2             -0.80        2.10000
+         Mg 5 -- Ca 5             -0.89        2.10000
+         Mg 4 -- Ca 4             -0.89        2.10000
+         Mg 4 -- Mg 5             -1.58        2.10000
+         Mg 3 -- Ca 3             -0.66        2.10000
+         Mg 2 -- Ca 2             -0.89        2.10000
+         Mg 2 -- Mg 5             -1.58        2.10000
+         Mg 1 -- Ca 1             -0.89        2.10000
+         Mg 1 -- Mg 4             -1.58        2.10000
+         Mg 1 -- Mg 2             -1.58        2.10000
+         O 11 -- O 12             -0.21        2.10000
+         O 10 -- O 13             -0.21        2.10000
+         O 8  -- O 9              -0.19        2.10000
+         O 6  -- O 9              -0.19        2.10000
+         O 5  -- O 8              -0.19        2.10000
+         O 5  -- O 6              -0.19        2.10000
+         O 4  -- O 13             -0.18        2.10000
+         O 3  -- O 12             -0.18        2.10000
+         O 2  -- O 11             -0.18        2.10000
+         O 2  -- O 3              -0.20        2.10000
+         O 1  -- O 10             -0.18        2.10000
+         O 1  -- O 4              -0.20        2.10000
+         Ca 8 -- Ca 9             -0.05        2.96985
+         Ca 7 -- Ca 9             -0.05        2.96985
+         Ca 6 -- Ca 8             -0.05        2.96985
+         Ca 6 -- Ca 7             -0.05        2.96985
+         Ca 5 -- Ca 9             -0.22        2.96985
+         Ca 5 -- Ca 8             -0.22        2.96985
+         Ca 4 -- Ca 9             -0.22        2.96985
+         Ca 4 -- Ca 7             -0.22        2.96985
+         Ca 3 -- Ca 9             -0.14        2.96985
+         Ca 3 -- Ca 8             -0.14        2.96985
+         Ca 3 -- Ca 7             -0.14        2.96985
+         Ca 3 -- Ca 6             -0.14        2.96985
+         Ca 3 -- Ca 5             -0.07        2.96985
+         Ca 3 -- Ca 4             -0.07        2.96985
+         Ca 2 -- Ca 8             -0.22        2.96985
+         Ca 2 -- Ca 6             -0.22        2.96985
+         Ca 2 -- Ca 3             -0.07        2.96985
+         Ca 1 -- Ca 7             -0.22        2.96985
+         Ca 1 -- Ca 6             -0.22        2.96985
+         Ca 1 -- Ca 3             -0.07        2.96985
+         Mg 5 -- Ca 9             -0.06        2.96985
+         Mg 5 -- Ca 8             -0.06        2.96985
+         Mg 4 -- Ca 9             -0.06        2.96985
+         Mg 4 -- Ca 7             -0.06        2.96985
+         Mg 3 -- Ca 9             -0.07        2.96985
+         Mg 3 -- Ca 8             -0.07        2.96985
+         Mg 3 -- Ca 7             -0.07        2.96985
+         Mg 3 -- Ca 6             -0.07        2.96985
+         Mg 3 -- Mg 5             -0.34        2.96985
+         Mg 3 -- Mg 4             -0.34        2.96985
+         Mg 2 -- Ca 8             -0.06        2.96985
+         Mg 2 -- Ca 6             -0.06        2.96985
+         Mg 2 -- Mg 3             -0.34        2.96985
+         Mg 1 -- Ca 7             -0.06        2.96985
+         Mg 1 -- Ca 6             -0.06        2.96985
+         Mg 1 -- Mg 3             -0.34        2.96985
+         O 12 -- O 13             -0.04        2.96985
+         O 11 -- O 13             -0.04        2.96985
+         O 10 -- O 12             -0.04        2.96985
+         O 10 -- O 11             -0.04        2.96985
+         O 9  -- O 13             -0.02        2.96985
+         O 9  -- O 12             -0.02        2.96985
+         O 8  -- O 13             -0.02        2.96985
+         O 8  -- O 11             -0.02        2.96985
+         O 7  -- O 13             -0.02        2.96985
+         O 7  -- O 12             -0.02        2.96985
+         O 7  -- O 11             -0.02        2.96985
+         O 7  -- O 10             -0.02        2.96985
+         O 7  -- O 9              -0.01        2.96985
+         O 7  -- O 8              -0.01        2.96985
+         O 6  -- O 12             -0.02        2.96985
+         O 6  -- O 10             -0.02        2.96985
+         O 6  -- O 7              -0.01        2.96985
+         O 5  -- O 11             -0.02        2.96985
+         O 5  -- O 10             -0.02        2.96985
+         O 5  -- O 7              -0.01        2.96985
+         O 4  -- O 9              -0.01        2.96985
+         O 4  -- O 8              -0.01        2.96985
+         O 4  -- O 7              -0.01        2.96985
+         O 3  -- O 9              -0.01        2.96985
+         O 3  -- O 7              -0.01        2.96985
+         O 3  -- O 6              -0.01        2.96985
+         O 3  -- O 4              -0.01        2.96985
+         O 2  -- O 8              -0.01        2.96985
+         O 2  -- O 7              -0.01        2.96985
+         O 2  -- O 5              -0.01        2.96985
+         O 2  -- O 4              -0.01        2.96985
+         O 1  -- O 7              -0.01        2.96985
+         O 1  -- O 6              -0.01        2.96985
+         O 1  -- O 5              -0.01        2.96985
+         O 1  -- O 3              -0.01        2.96985
+         O 1  -- O 2              -0.01        2.96985
+         Ca 2 -- Ca 4              0.32        2.96985
+         Ca 1 -- Ca 5              0.32        2.96985
+         Mg 5 -- Ca 4             -0.28        2.96985
+         Mg 5 -- Ca 2             -0.28        2.96985
+         Mg 4 -- Ca 5             -0.28        2.96985
+         Mg 4 -- Ca 1             -0.28        2.96985
+         Mg 2 -- Ca 5             -0.28        2.96985
+         Mg 2 -- Ca 1             -0.28        2.96985
+         Mg 2 -- Mg 4             -0.58        2.96985
+         Mg 1 -- Ca 4             -0.28        2.96985
+         Mg 1 -- Ca 2             -0.28        2.96985
+         Mg 1 -- Mg 5             -0.58        2.96985
+         O 13 -- Ca 6             -0.04        2.96985
+         O 13 -- Ca 5             -0.11        2.96985
+         O 13 -- Ca 4             -0.11        2.96985
+         O 13 -- Ca 3             -0.08        2.96985
+         O 13 -- Mg 2             -0.17        2.96985
+         O 13 -- Mg 1             -0.17        2.96985
+         O 12 -- Ca 7             -0.04        2.96985
+         O 12 -- Ca 5             -0.11        2.96985
+         O 12 -- Ca 3             -0.08        2.96985
+         O 12 -- Ca 2             -0.11        2.96985
+         O 12 -- Mg 4             -0.17        2.96985
+         O 12 -- Mg 1             -0.17        2.96985
+         O 11 -- Ca 8             -0.04        2.96985
+         O 11 -- Ca 4             -0.11        2.96985
+         O 11 -- Ca 3             -0.08        2.96985
+         O 11 -- Ca 1             -0.11        2.96985
+         O 11 -- Mg 5             -0.17        2.96985
+         O 11 -- Mg 2             -0.17        2.96985
+         O 10 -- Ca 9             -0.04        2.96985
+         O 10 -- Ca 3             -0.08        2.96985
+         O 10 -- Ca 2             -0.11        2.96985
+         O 10 -- Ca 1             -0.11        2.96985
+         O 10 -- Mg 5             -0.17        2.96985
+         O 10 -- Mg 4             -0.17        2.96985
+         O 9  -- Ca 7             -0.03        2.96985
+         O 9  -- Ca 6             -0.03        2.96985
+         O 9  -- Ca 4             -0.07        2.96985
+         O 9  -- Ca 2             -0.07        2.96985
+         O 9  -- Mg 4             -0.21        2.96985
+         O 9  -- Mg 2             -0.21        2.96985
+         O 8  -- Ca 8             -0.03        2.96985
+         O 8  -- Ca 6             -0.03        2.96985
+         O 8  -- Ca 5             -0.07        2.96985
+         O 8  -- Ca 1             -0.07        2.96985
+         O 8  -- Mg 5             -0.21        2.96985
+         O 8  -- Mg 1             -0.21        2.96985
+         O 6  -- Ca 9             -0.03        2.96985
+         O 6  -- Ca 7             -0.03        2.96985
+         O 6  -- Ca 5             -0.07        2.96985
+         O 6  -- Ca 1             -0.07        2.96985
+         O 6  -- Mg 5             -0.21        2.96985
+         O 6  -- Mg 1             -0.21        2.96985
+         O 6  -- O 8              -0.02        2.96985
+         O 5  -- Ca 9             -0.03        2.96985
+         O 5  -- Ca 8             -0.03        2.96985
+         O 5  -- Ca 4             -0.07        2.96985
+         O 5  -- Ca 2             -0.07        2.96985
+         O 5  -- Mg 4             -0.21        2.96985
+         O 5  -- Mg 2             -0.21        2.96985
+         O 5  -- O 9              -0.02        2.96985
+         O 4  -- Ca 6             -0.03        2.96985
+         O 4  -- Ca 2             -0.03        2.96985
+         O 4  -- Ca 1             -0.03        2.96985
+         O 4  -- Mg 5             -0.06        2.96985
+         O 4  -- Mg 4             -0.06        2.96985
+         O 4  -- Mg 3             -0.06        2.96985
+         O 4  -- O 10             -0.02        2.96985
+         O 3  -- Ca 7             -0.03        2.96985
+         O 3  -- Ca 4             -0.03        2.96985
+         O 3  -- Ca 1             -0.03        2.96985
+         O 3  -- Mg 5             -0.06        2.96985
+         O 3  -- Mg 3             -0.06        2.96985
+         O 3  -- Mg 2             -0.06        2.96985
+         O 3  -- O 11             -0.02        2.96985
+         O 2  -- Ca 8             -0.03        2.96985
+         O 2  -- Ca 5             -0.03        2.96985
+         O 2  -- Ca 2             -0.03        2.96985
+         O 2  -- Mg 4             -0.06        2.96985
+         O 2  -- Mg 3             -0.06        2.96985
+         O 2  -- Mg 1             -0.06        2.96985
+         O 2  -- O 12             -0.02        2.96985
+         O 1  -- Ca 9             -0.03        2.96985
+         O 1  -- Ca 5             -0.03        2.96985
+         O 1  -- Ca 4             -0.03        2.96985
+         O 1  -- Mg 3             -0.06        2.96985
+         O 1  -- Mg 2             -0.06        2.96985
+         O 1  -- Mg 1             -0.06        2.96985
+         O 1  -- O 13             -0.02        2.96985
+============================================================
+ 
+
+Writing analysis data to cube_064.castep_bin
+
+Writing model to cube_064.check
+ 
+ A BibTeX formatted list of references used in this run has been written to 
+ cube_064.bib
+ 
+Initialisation time =     12.02 s
+Calculation time    =    435.81 s
+Finalisation time   =      7.29 s
+Total time          =    455.13 s
+Peak Memory Use     = 1158552 kB
+  
+Overall parallel efficiency rating: Excellent (98%)                             
+  
+Data was distributed by:-
+k-point (3-way); efficiency rating: Excellent (98%)                             
+  
+Parallel notes:
+1) Calculation only took 448.1 s, so efficiency estimates may be inaccurate.    
