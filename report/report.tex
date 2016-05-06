@@ -31,7 +31,7 @@
 \maketitle
 
 \begin{abstract}
-    
+    An infinite lattice of magnesium and calcium, in a crystalline structure with oxygen, was simulated for varying relative concentrations of the metals using CASTEP. It was found that the most favourable (lowest energy) concentrations are those where approximately 20\% of the metal in the crystal is calcium. However, only single-point energies were considered due to computational limitations; geometry optimisation may lead to differing results.
 \end{abstract}
 
 \begin{multicols}{2}
@@ -52,9 +52,13 @@
 	    \captionof{figure}{Convex hull diagram. The red points represent the formation energies determined from the deviation from the straight line fit. The green line is the convex hull.}
 		\label{fig:convex} 
 	\end{center}
-    The results of the convex hull (Figure \ref{fig:convex}) were not as expected.  Clearly energies for a lattice of pure MgO or pure CaO had an energy of zero as these points exactly correspond with the straight line fit. When there was relatively little Ca in the lattice the results seemed well behaved but with higher concentrations of Ca formation energies rapidly became positive and the convex hull algorithm could not fit a well behaved parabola.
+    The results of the convex hull (Figure \ref{fig:convex}) were not as expected.  Clearly energies for a lattice of pure MgO or pure CaO had an energy of zero as these points exactly correspond with the straight line fit. When there was relatively little calcium in the lattice, the results seemed well behaved; however, with higher concentrations of calcium the formation energies rapidly became positive and the convex hull algorithm became less useful.   
     
     This behaviour could be due to setting a fixed lattice and not optimising the geometry. Whilst the lattice set up for MgO may have been energetically favourable, Ca is a larger atom than Mg. With higher concentrations of Ca the fixed positions of the atoms may be packing them tighter than they would naturally form leading to the higher formation energies. These results could be improved by using the geometry optimisation feature of CASTEP. This will optimise the exact locations of particles in the lattice to find the most energetically favourable configuration. This is  an extremely computationally expensive process but would be possible with more time and reliable access to a supercomputer or cluster.
+    
+    The convex hull can be used, however, to draw conclusions about lower concentrations. In particular, lattices with calcium concentrations of 0.27 and 0.33 lie inside the convex hull, implying that structures with these overall proportions would have a lower energy if composed from two regions of differing proportions. In other words, these concentrations appear to be inherently less stable. This presents scope for further investigation.
+    
+	While the results obtained in this investigation have many deficiencies, in particular due to the single-point simulation not accounting for the optimal geometry of the system, they do shed light on the optimal concentrations of magnesium and calcium in a solid. Extensions of this work may focus on improving these results by performing geometry optimisation or by considering the more interesting and significant case of an interface between oxides of calcium and magnesium. Such analysis is possible without modification of the programs used here, but will require extended computation time.
 	
 \raggedright
 \bibliography{bibliography}
